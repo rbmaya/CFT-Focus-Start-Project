@@ -8,4 +8,9 @@
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
     <string name="registration_text">Registration</string>
+    <string name="success_registration">You are registered successfully</string>
+    <string name="unauthorized_error_body">Authentication required</string>
+    <string name="forbidden_error_body">You don\'t have permission to access</string>
+    <string name="not_found_error_body">A resource can not be found</string>
+    <string name="unknown_error_body">Unknown error</string>
 </resources>
