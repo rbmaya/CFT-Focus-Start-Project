@@ -6,4 +6,6 @@
     <string name="do_not_have_an_account_text">Don\'t have an account?</string>
     <string name="register_text">Register</string>
     <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="registration_text">Registration</string>
 </resources>
