@@ -1,6 +1,6 @@
 package com.nsu.focusstartproject.di
 
-import com.nsu.focusstartproject.data.AuthApi
+import com.nsu.focusstartproject.data.auth.AuthApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

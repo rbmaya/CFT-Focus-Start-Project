@@ -1,6 +1,6 @@
-package com.nsu.focusstartproject.data
+package com.nsu.focusstartproject.data.auth
 
-import com.nsu.focusstartproject.domain.AuthRepository
+import com.nsu.focusstartproject.domain.auth.AuthRepository
 import com.nsu.focusstartproject.utils.DataStatus
 import com.nsu.focusstartproject.utils.toDataStatus
 import kotlinx.coroutines.Dispatchers

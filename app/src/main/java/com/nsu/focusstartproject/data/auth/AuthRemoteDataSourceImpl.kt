@@ -1,4 +1,4 @@
-package com.nsu.focusstartproject.data
+package com.nsu.focusstartproject.data.auth
 
 import retrofit2.Response
 import javax.inject.Inject
@@ -7,7 +7,7 @@ import javax.inject.Singleton
 @Singleton
 class AuthRemoteDataSourceImpl @Inject constructor(
     private val authApi: AuthApi
-): AuthDataSource{
+): AuthDataSource {
 
     override suspend fun signIn(userName: String, password: String): Response<String> {
         return authApi.signIn(userName = userName, password = password)

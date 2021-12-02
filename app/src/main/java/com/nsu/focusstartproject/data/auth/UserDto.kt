@@ -1,4 +1,4 @@
-package com.nsu.focusstartproject.data
+package com.nsu.focusstartproject.data.auth
 
 data class UserDto(
     val name: String,

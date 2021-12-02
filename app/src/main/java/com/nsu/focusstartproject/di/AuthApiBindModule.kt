@@ -1,7 +1,7 @@
 package com.nsu.focusstartproject.di
 
-import com.nsu.focusstartproject.data.AuthDataSource
-import com.nsu.focusstartproject.data.AuthRemoteDataSourceImpl
+import com.nsu.focusstartproject.data.auth.AuthDataSource
+import com.nsu.focusstartproject.data.auth.AuthRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

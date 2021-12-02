@@ -1,4 +1,4 @@
-package com.nsu.focusstartproject.domain
+package com.nsu.focusstartproject.domain.auth
 
 import com.nsu.focusstartproject.utils.DataStatus
 import javax.inject.Inject
