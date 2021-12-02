@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_user_nav_graph"
+    app:startDestination="@id/loanListFragment">
+
+    <fragment
+        android:id="@+id/loanListFragment"
+        android:name="com.nsu.focusstartproject.presentation.auth_user_screens.LoanListFragment"
+        android:label="loan_list_fragment"
+        tools:layout="@layout/loan_list_fragment" />
+</navigation>
