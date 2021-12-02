@@ -29,7 +29,7 @@ class RetrofitModule {
             )
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("focusstart.appspot.com/")
+            .baseUrl("https://focusstart.appspot.com/")
             .build()
 
     @Singleton

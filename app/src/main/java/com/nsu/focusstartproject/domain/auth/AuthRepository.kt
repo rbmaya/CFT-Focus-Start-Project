@@ -1,9 +1,10 @@
 package com.nsu.focusstartproject.domain.auth
 
+import com.nsu.focusstartproject.domain.UserInfo
 import com.nsu.focusstartproject.utils.DataStatus
 
 interface AuthRepository {
-    suspend fun signIn(userName: String, password: String): DataStatus<String>
+    suspend fun signIn(userInfo: UserInfo): DataStatus<String>
 
-    suspend fun signUp(userName: String, password: String): DataStatus<Any>
+    suspend fun signUp(userInfo: UserInfo): DataStatus<Any>
 }

@@ -1,9 +1,10 @@
 package com.nsu.focusstartproject.data.auth
 
+import com.nsu.focusstartproject.domain.UserInfo
 import retrofit2.Response
 
 interface AuthDataSource {
-    suspend fun signIn(userName: String, password: String): Response<String>
+    suspend fun signIn(userInfo: UserInfo): Response<String>
 
-    suspend fun signUp(userName: String, password: String): Response<UserDto>
+    suspend fun signUp(userInfo: UserInfo): Response<UserDto>
 }
