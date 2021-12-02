@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NormalText">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="NormalText.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

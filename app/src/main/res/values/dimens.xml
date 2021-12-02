@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="vertical_margin_fields" type="dimen">12dp</item>
+    <item name="horizontal_margin_fields" type="dimen">30dp</item>
+    <item name="bottom_margin_title" type="dimen">30dp</item>
+    <item name="top_margin_title" type="dimen">100dp</item>
+    <item name="margin_text" type="dimen">6dp</item>
+    <item name="top_margin_button" type="dimen">80dp</item>
+    <item name="button_size" type="dimen">70dp</item>
+</resources>
