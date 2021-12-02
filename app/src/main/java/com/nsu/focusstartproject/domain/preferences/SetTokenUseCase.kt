@@ -7,6 +7,6 @@ import javax.inject.Singleton
 class SetTokenUseCase @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ){
-    suspend fun invoke(token: String) =
+    suspend operator fun invoke(token: String) =
         preferencesRepository.setToken(token = token)
 }
