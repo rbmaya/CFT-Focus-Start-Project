@@ -3,7 +3,11 @@ package com.nsu.focusstartproject.di
 import com.nsu.focusstartproject.data.auth.AuthDataSource
 import com.nsu.focusstartproject.data.auth.AuthRemoteDataSourceImpl
 import com.nsu.focusstartproject.data.auth.AuthRepositoryImpl
+import com.nsu.focusstartproject.data.preferences.PreferencesDataSource
+import com.nsu.focusstartproject.data.preferences.PreferencesDataSourceImpl
+import com.nsu.focusstartproject.data.preferences.PreferencesRepositoryImpl
 import com.nsu.focusstartproject.domain.auth.AuthRepository
+import com.nsu.focusstartproject.domain.preferences.PreferencesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -12,15 +16,15 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface AuthApiBindModule {
+interface PreferencesBindModule {
 
     @Singleton
     @Binds
     @Suppress("FunctionName")
-    fun bindAuthRemoteDataSourceImpl_to_authDataSource(impl: AuthRemoteDataSourceImpl): AuthDataSource
+    fun bindPreferencesDataSourceImpl_to_preferencesDataSource(impl: PreferencesDataSourceImpl): PreferencesDataSource
 
     @Singleton
     @Binds
     @Suppress("FunctionName")
-    fun bindAuthRepositoryImpl_to_authRepository(impl: AuthRepositoryImpl): AuthRepository
+    fun bindPreferencesRepositoryImpl_to_preferencesRepository(impl: PreferencesRepositoryImpl): PreferencesRepository
 }
