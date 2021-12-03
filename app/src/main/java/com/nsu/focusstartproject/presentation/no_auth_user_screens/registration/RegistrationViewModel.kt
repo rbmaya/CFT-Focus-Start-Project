@@ -7,23 +7,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nsu.focusstartproject.domain.UserInfo
 import com.nsu.focusstartproject.domain.auth.SignUpUseCase
-import com.nsu.focusstartproject.utils.DataStatus
-import com.nsu.focusstartproject.utils.FieldsError
-import com.nsu.focusstartproject.utils.LiveEvent
-import com.nsu.focusstartproject.utils.SingleLiveEvent
+import com.nsu.focusstartproject.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
     private val signUpUseCase: SignUpUseCase
-): ViewModel() {
+) : ViewModel() {
 
-    companion object{
+    companion object {
         const val TAG = "RegistrationViewModel"
     }
 
@@ -37,36 +33,38 @@ class RegistrationViewModel @Inject constructor(
     val wrongFieldsEvent: LiveData<FieldsError> = _wrongFieldsEvent
 
     private val excHandler = CoroutineExceptionHandler { _, throwable ->
-        throwable.message?.let { Log.e(TAG, it) }
+        throwable.message?.let {
+            Log.e(TAG, it)
+            _registrationStatus.value = DataStatus.Error(code = ErrorCode.UNKNOWN)
+        }
     }
 
-    fun signUp(userName: String, password: String){
-        if (!validateFields(userName = userName, password = password)){
+    fun signUp(userName: String, password: String) {
+        if (!validateFields(userName = userName, password = password)) {
             return
         }
         _registrationStatus.value = DataStatus.Loading
-        viewModelScope.launch(excHandler){
+        viewModelScope.launch(excHandler) {
             val regStatus = signUpUseCase(UserInfo(name = userName, password = password))
             _registrationStatus.value = regStatus
         }
     }
 
-    fun onSuccessSignUp(){
+    fun onSuccessSignUp() {
         _navigateToAuthentication()
     }
 
-    private fun validateFields(userName: String, password: String): Boolean{
-        if (userName.isBlank()){
+    private fun validateFields(userName: String, password: String): Boolean {
+        if (userName.isBlank()) {
             _wrongFieldsEvent(FieldsError.EMPTY_USERNAME)
             return false
         }
-        if (password.isBlank()){
+        if (password.isBlank()) {
             _wrongFieldsEvent(FieldsError.EMPTY_PASSWORD)
             return false
         }
         return true
     }
-
 
 
 }

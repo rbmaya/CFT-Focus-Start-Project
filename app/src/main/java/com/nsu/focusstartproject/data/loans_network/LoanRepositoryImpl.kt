@@ -1,6 +1,8 @@
 package com.nsu.focusstartproject.data.loans_network
 
 import com.nsu.focusstartproject.domain.Loan
+import com.nsu.focusstartproject.domain.LoanCondition
+import com.nsu.focusstartproject.domain.LoanRequest
 import com.nsu.focusstartproject.domain.loan_network.LoanRepository
 import com.nsu.focusstartproject.utils.DataStatus
 import com.nsu.focusstartproject.utils.toDataStatus
@@ -22,10 +24,23 @@ class LoanRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getAllLoans(): DataStatus<List<Loan>> {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             val response = loanDataSource.getAllLoans()
             response.toDataStatus()
         }
     }
 
+    override suspend fun createLoanRequest(loanRequest: LoanRequest): DataStatus<Loan> {
+        return withContext(Dispatchers.IO) {
+            val response = loanDataSource.createLoanRequest(loanRequest = loanRequest)
+            response.toDataStatus()
+        }
+    }
+
+    override suspend fun getLoanConditions(): DataStatus<LoanCondition> {
+        return withContext(Dispatchers.IO) {
+            val response = loanDataSource.getLoanConditions()
+            response.toDataStatus()
+        }
+    }
 }

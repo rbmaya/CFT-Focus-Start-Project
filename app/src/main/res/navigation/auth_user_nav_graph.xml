@@ -9,5 +9,14 @@
         android:id="@+id/loanListFragment"
         android:name="com.nsu.focusstartproject.presentation.auth_user_screens.loan_list.LoanListFragment"
         android:label="loan_list_fragment"
-        tools:layout="@layout/loan_list_fragment" />
+        tools:layout="@layout/loan_list_fragment">
+        <action
+            android:id="@+id/action_loanListFragment_to_newLoanFragment"
+            app:destination="@id/newLoanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newLoanFragment"
+        android:name="com.nsu.focusstartproject.presentation.auth_user_screens.new_loan.NewLoanFragment"
+        android:label="new_loan_fragment"
+        tools:layout="@layout/new_loan_fragment" />
 </navigation>

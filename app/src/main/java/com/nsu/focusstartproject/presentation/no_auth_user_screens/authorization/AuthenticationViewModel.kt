@@ -9,10 +9,7 @@ import com.nsu.focusstartproject.domain.UserInfo
 import com.nsu.focusstartproject.domain.auth.SignInUseCase
 import com.nsu.focusstartproject.domain.preferences.GetTokenUseCase
 import com.nsu.focusstartproject.domain.preferences.SetTokenUseCase
-import com.nsu.focusstartproject.utils.DataStatus
-import com.nsu.focusstartproject.utils.FieldsError
-import com.nsu.focusstartproject.utils.LiveEvent
-import com.nsu.focusstartproject.utils.SingleLiveEvent
+import com.nsu.focusstartproject.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -23,9 +20,9 @@ class AuthenticationViewModel @Inject constructor(
     private val getTokenUseCase: GetTokenUseCase,
     private val setTokenUseCase: SetTokenUseCase,
     private val signInUseCase: SignInUseCase
-): ViewModel() {
+) : ViewModel() {
 
-    companion object{
+    companion object {
         const val TAG = "AuthViewModel"
     }
 
@@ -42,16 +39,19 @@ class AuthenticationViewModel @Inject constructor(
     val wrongFieldsEvent: LiveData<FieldsError> = _wrongFieldsEvent
 
     private val excHandler = CoroutineExceptionHandler { _, throwable ->
-        throwable.message?.let { Log.e(TAG, it) }
+        throwable.message?.let {
+            Log.e(TAG, it)
+            _authenticationStatus.value = DataStatus.Error(code = ErrorCode.UNKNOWN)
+        }
     }
 
-    fun signIn(userName: String, password: String){
-        if (!validateFields(userName = userName, password = password)){
+    fun signIn(userName: String, password: String) {
+        if (!validateFields(userName = userName, password = password)) {
             return
         }
         _authenticationStatus.value = DataStatus.Loading
         viewModelScope.launch(excHandler) {
-            when (val token = signInUseCase(UserInfo(name = userName, password = password))){
+            when (val token = signInUseCase(UserInfo(name = userName, password = password))) {
                 is DataStatus.Success -> {
                     token.data?.let {
                         setTokenUseCase(it)
@@ -65,29 +65,29 @@ class AuthenticationViewModel @Inject constructor(
         }
     }
 
-    fun onSuccessSignIn(){
+    fun onSuccessSignIn() {
         _navigateToMainScreen()
     }
 
-    fun onRegisterButtonClicked(){
+    fun onRegisterButtonClicked() {
         _navigateToSignUpScreen()
     }
 
-    fun checkIsAuthorized(){
+    fun checkIsAuthorized() {
         viewModelScope.launch(excHandler) {
             val token = getTokenUseCase()
-            if (token.isNotBlank()){
+            if (token.isNotBlank()) {
                 _navigateToMainScreen()
             }
         }
     }
 
-    private fun validateFields(userName: String, password: String): Boolean{
-        if (userName.isBlank()){
+    private fun validateFields(userName: String, password: String): Boolean {
+        if (userName.isBlank()) {
             _wrongFieldsEvent(FieldsError.EMPTY_USERNAME)
             return false
         }
-        if (password.isBlank()){
+        if (password.isBlank()) {
             _wrongFieldsEvent(FieldsError.EMPTY_PASSWORD)
             return false
         }
