@@ -29,7 +29,7 @@ class AuthenticationViewModel @Inject constructor(
         const val TAG = "AuthViewModel"
     }
 
-    private val _authenticationStatus: MutableLiveData<DataStatus<String>> = MutableLiveData()
+    private val _authenticationStatus = MutableLiveData<DataStatus<String>>()
     val authenticationStatus: LiveData<DataStatus<String>> = _authenticationStatus
 
     private val _navigateToMainScreen = LiveEvent()

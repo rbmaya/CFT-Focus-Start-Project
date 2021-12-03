@@ -24,7 +24,7 @@ class RetrofitModule {
                 OkHttpClient.Builder()
                     .addInterceptor(HttpLoggingInterceptor().also {
                         it.level = HttpLoggingInterceptor.Level.BODY
-                    }).readTimeout(15, TimeUnit.SECONDS)
+                    }).readTimeout(1, TimeUnit.MINUTES)
                     .build()
             )
             .addConverterFactory(ScalarsConverterFactory.create())

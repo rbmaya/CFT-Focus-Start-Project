@@ -27,7 +27,7 @@ class RegistrationViewModel @Inject constructor(
         const val TAG = "RegistrationViewModel"
     }
 
-    private val _registrationStatus: MutableLiveData<DataStatus<Any>> = MutableLiveData()
+    private val _registrationStatus = MutableLiveData<DataStatus<Any>>()
     val registrationStatus: LiveData<DataStatus<Any>> = _registrationStatus
 
     private val _navigateToAuthentication = LiveEvent()
@@ -46,7 +46,8 @@ class RegistrationViewModel @Inject constructor(
         }
         _registrationStatus.value = DataStatus.Loading
         viewModelScope.launch(excHandler){
-            _registrationStatus.value = signUpUseCase(UserInfo(name = userName, password = password))
+            val regStatus = signUpUseCase(UserInfo(name = userName, password = password))
+            _registrationStatus.value = regStatus
         }
     }
 
