@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loanListFragment"
-        android:name="com.nsu.focusstartproject.presentation.auth_user_screens.LoanListFragment"
+        android:name="com.nsu.focusstartproject.presentation.auth_user_screens.loan_list.LoanListFragment"
         android:label="loan_list_fragment"
         tools:layout="@layout/loan_list_fragment" />
 </navigation>

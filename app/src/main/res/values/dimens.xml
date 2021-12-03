@@ -6,8 +6,11 @@
     <item name="top_margin_title" type="dimen">100dp</item>
     <item name="margin_text" type="dimen">6dp</item>
     <item name="top_margin_button" type="dimen">80dp</item>
+    <item name="margin_floating_button" type="dimen">32dp</item>
     <item name="button_size" type="dimen">70dp</item>
     <item name="progress_bar_track_thickness" type="dimen">6dp</item>
     <item name="progress_bar_track_corner_radius" type="dimen">8dp</item>
-
+    <item name="card_corner_radius" type="dimen">16dp</item>
+    <item name="card_elevation" type="dimen">16dp</item>
+    <item name="divider_height" type="dimen">3dp</item>
 </resources>

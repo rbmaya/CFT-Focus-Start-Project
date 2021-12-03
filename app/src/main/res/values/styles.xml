@@ -8,4 +8,16 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="NormalText.Italic">
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="BigText" parent="NormalText">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="BigText.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

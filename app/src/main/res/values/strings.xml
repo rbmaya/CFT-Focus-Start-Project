@@ -13,4 +13,7 @@
     <string name="forbidden_error_body">You don\'t have permission to access</string>
     <string name="not_found_error_body">A resource can not be found</string>
     <string name="unknown_error_body">Unknown error</string>
+    <string name="loan_list">Loan list</string>
+    <string name="account">Account</string>
+    <string name="period">| %1$s</string>
 </resources>
