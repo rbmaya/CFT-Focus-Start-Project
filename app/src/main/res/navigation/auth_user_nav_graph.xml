@@ -13,10 +13,17 @@
         <action
             android:id="@+id/action_loanListFragment_to_newLoanFragment"
             app:destination="@id/newLoanFragment" />
+        <action
+            android:id="@+id/action_loanListFragment_to_loanDetailsFragment"
+            app:destination="@id/loanDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newLoanFragment"
         android:name="com.nsu.focusstartproject.presentation.auth_user_screens.new_loan.NewLoanFragment"
         android:label="new_loan_fragment"
         tools:layout="@layout/new_loan_fragment" />
+    <fragment
+        android:id="@+id/loanDetailsFragment"
+        android:name="com.nsu.focusstartproject.presentation.auth_user_screens.loan_details.LoanDetailsFragment"
+        android:label="LoanDetailsFragment" />
 </navigation>

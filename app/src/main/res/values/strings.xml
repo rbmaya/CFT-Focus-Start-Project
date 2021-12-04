@@ -30,4 +30,7 @@
     <string name="error_loading_conditions">"Error loading loan conditions: "</string>
     <string name="error_creating_loan">Error creating loan request</string>
     <string name="money">%1$s\$</string>
+    <string name="amount_label">Amount: </string>
+    <string name="date_label">Date:</string>
+    <string name="state">State</string>
 </resources>

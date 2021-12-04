@@ -14,8 +14,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/new_loan_fragment_padding"
+            android:padding="@dimen/main_padding"
             tools:context=".presentation.auth_user_screens.new_loan.NewLoanFragment">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/top_margin_title"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/conditions_available"
+                style="@style/NormalText" />
+
+            <TextView
+                android:id="@+id/conditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                style="@style/NormalText.Bold"
+                android:layout_marginVertical="@dimen/vertical_margin_fields"
+                tools:text="At 5% for 30 days" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/amount_layout"
@@ -85,23 +102,6 @@
                     android:inputType="phone" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/top_margin_title"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/conditions_available"
-                style="@style/NormalText" />
-
-            <TextView
-                android:id="@+id/conditions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                style="@style/NormalText.Bold"
-                android:layout_marginVertical="@dimen/vertical_margin_fields"
-                tools:text="At 5% for 30 days" />
 
             <Button
                 android:id="@+id/add_loan"

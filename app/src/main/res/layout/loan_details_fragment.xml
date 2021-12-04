@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/small_padding"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/card_elevation"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        android:padding="@dimen/main_padding"
+        tools:context=".presentation.auth_user_screens.loan_details.LoanDetailsFragment">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/main_padding">
+
+            <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+
+                <TextView
+                    style="@style/NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/amount_label" />
+
+                <TextView
+                    android:id="@+id/amount"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="15000" />
+            </TableRow>
+
+            <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+
+                <TextView
+                    style="@style/NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/date" />
+
+                <TextView
+                    android:id="@+id/date"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="24.12.2021" />
+            </TableRow>
+
+            <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+
+                <TextView
+                    style="@style/NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/first_name" />
+
+                <TextView
+                    android:id="@+id/first_name"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Иван" />
+            </TableRow>
+
+            <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+
+                <TextView
+                    style="@style/NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/last_name" />
+
+                <TextView
+                    android:id="@+id/last_name"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="Иванов" />
+            </TableRow>
+
+            <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+
+                <TextView
+                    style="@style/NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/percent" />
+
+                <TextView
+                    android:id="@+id/percent"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="5%" />
+            </TableRow>
+
+            <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+
+                <TextView
+                    style="@style/NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/period_text_field" />
+
+                <TextView
+                    android:id="@+id/period"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="30 days" />
+            </TableRow>
+
+            <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+
+                <TextView
+                    style="@style/NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/phone_number" />
+
+                <TextView
+                    android:id="@+id/phone_number"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="+79234567812" />
+            </TableRow>
+
+            <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+
+                <TextView
+                    style="@style/NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/state" />
+
+                <TextView
+                    android:id="@+id/state"
+                    style="@style/NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="APPROVED" />
+            </TableRow>
+
+        </TableLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.core.widget.NestedScrollView>
