@@ -27,10 +27,12 @@ class LoanHolder(
 
     fun bind(loan: Loan){
         binding.apply {
+            val resources = binding.root.context
+
             date.text = loan.date
-            amount.text = loan.amount.toString()
+            amount.text = resources.getString(R.string.money, loan.amount.toString())
             state.text = loan.state
-            val periodText = binding.root.context.getString(R.string.period, loan.period.toString())
+            val periodText = resources.getString(R.string.period, loan.period.toString())
             period.text = periodText
         }
     }

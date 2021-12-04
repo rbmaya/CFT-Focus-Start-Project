@@ -1,137 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/new_loan_fragment_padding"
-        tools:context=".presentation.auth_user_screens.new_loan.NewLoanFragment">
+        android:fillViewport="true">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/amount_layout"
-            style="@style/NormalText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/vertical_margin_fields"
-            app:helperTextEnabled="true"
-            tools:helperText="Maximum: 300$"
-            android:hint="@string/amount"
-            app:endIconMode="clear_text"
-            app:errorEnabled="true">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/new_loan_fragment_padding"
+            tools:context=".presentation.auth_user_screens.new_loan.NewLoanFragment">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/amount"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/amount_layout"
+                style="@style/TextFieldStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:layout_marginTop="@dimen/vertical_margin_fields"
+                app:helperTextEnabled="true"
+                tools:helperText="Maximum: 300$"
+                android:hint="@string/amount"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/NormalText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/vertical_margin_fields"
-            android:hint="@string/first_name"
-            app:endIconMode="clear_text">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/first_name"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextFieldStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:layout_marginVertical="@dimen/vertical_margin_fields"
+                android:hint="@string/first_name"
+                app:endIconMode="clear_text">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/first_name"
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/NormalText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/vertical_margin_fields"
-            android:hint="@string/last_name"
-            app:endIconMode="clear_text">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/last_name"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextFieldStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:layout_marginVertical="@dimen/vertical_margin_fields"
+                android:hint="@string/last_name"
+                app:endIconMode="clear_text">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/NormalText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/vertical_margin_fields"
-            android:hint="@string/phone_number"
-            app:endIconMode="clear_text">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/phone_number"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextFieldStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone" />
+                android:layout_marginVertical="@dimen/vertical_margin_fields"
+                android:hint="@string/phone_number"
+                app:endIconMode="clear_text">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/conditions_available"
-            style="@style/NormalText" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/NormalText"
-            android:id="@+id/period_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/vertical_margin_fields"
-            app:prefixText="@string/period_text_field">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/top_margin_title"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/conditions_available"
+                style="@style/NormalText" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/period"
-                android:clickable="false"
+            <TextView
+                android:id="@+id/conditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                style="@style/NormalText.Bold"
+                android:layout_marginVertical="@dimen/vertical_margin_fields"
+                tools:text="At 5% for 30 days" />
+
+            <Button
+                android:id="@+id/add_loan"
+                style="@style/NormalText"
+                android:padding="@dimen/button_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/NormalText"
-            android:id="@+id/percent_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/vertical_margin_fields"
-            app:prefixText="@string/percent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/percent"
-                android:clickable="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/horizontal_margin_button"
+                android:text="@string/create_a_request" />
 
 
-        <Button
-            android:id="@+id/add_loan"
-            style="@style/NormalText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginHorizontal="@dimen/horizontal_margin_button"
-            android:text="@string/create_a_request" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/new_loan_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:trackCornerRadius="@dimen/progress_bar_track_corner_radius"
+        app:trackThickness="@dimen/progress_bar_track_thickness" />
 
 
-    </LinearLayout>
-
-</androidx.core.widget.NestedScrollView>
+</FrameLayout>

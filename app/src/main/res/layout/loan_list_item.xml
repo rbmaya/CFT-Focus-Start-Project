@@ -18,12 +18,20 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_constraintGuide_begin="@dimen/list_item_guideline_margin_start" />
+
             <TextView
                 android:id="@+id/amount"
-                style="@style/BigText.Bold"
+                style="@style/NormalText.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@id/state"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="20$" />
@@ -34,18 +42,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/vertical_margin_fields"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/amount"
                 tools:text="APPROVED" />
 
             <TextView
                 android:id="@+id/date"
+                android:ellipsize="end"
                 style="@style/NormalText"
-                android:layout_width="wrap_content"
+                android:maxLines="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/period"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="24.12.2021" />
 

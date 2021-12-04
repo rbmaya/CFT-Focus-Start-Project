@@ -1,6 +1,7 @@
 package com.nsu.focusstartproject.data.loans_network
 
 import com.nsu.focusstartproject.domain.Loan
+import com.nsu.focusstartproject.domain.LoanCondition
 import com.nsu.focusstartproject.domain.LoanRequest
 import retrofit2.Response
 import javax.inject.Inject
@@ -21,5 +22,9 @@ class LoanRemoteDataSourceImpl @Inject constructor(
 
     override suspend fun createLoanRequest(loanRequest: LoanRequest): Response<Loan> {
         return loanApi.createLoanRequest(loanRequest = loanRequest)
+    }
+
+    override suspend fun getLoanConditions(): Response<LoanCondition> {
+        return loanApi.getLoanConditions()
     }
 }

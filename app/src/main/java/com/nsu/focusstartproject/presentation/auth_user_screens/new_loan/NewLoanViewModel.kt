@@ -52,22 +52,41 @@ class NewLoanViewModel @Inject constructor(
         }
     }
 
-    fun createLoanRequest(loanRequest: LoanRequest) {
-        _loanRequestStatus.value = DataStatus.Loading
+    fun onErrorLoadingConditions() {
+        _navigateToLoanList()
+    }
+
+    fun onSuccessLoanRequest() {
+        _navigateToLoanList()
+    }
+
+    fun createLoanRequest(amount: Int, firstName: String, lastName: String, phoneNumber: String) {
         viewModelScope.launch(excHandler) {
-            if (validateFields(loanRequest.amount)) {
-                val newLoan = createLoanRequestUseCase(loanRequest = loanRequest)
-                _loanRequestStatus.value = newLoan
+            if (validateFields(amount)) {
+                _loanRequestStatus.value = DataStatus.Loading
+                val conditions = _loanConditionsStatus.value as DataStatus.Success
+                conditions.data?.let {
+                    val loanRequest = LoanRequest(
+                        amount = amount,
+                        firstName = firstName,
+                        lastName = lastName,
+                        phoneNumber = phoneNumber,
+                        percent = it.percent,
+                        period = it.period
+                    )
+                    val newLoan = createLoanRequestUseCase(loanRequest = loanRequest)
+                    _loanRequestStatus.value = newLoan
+                }
             }
         }
     }
 
-    private suspend fun validateFields(amount: Int): Boolean {
+    private fun validateFields(amount: Int): Boolean {
         val conditions = _loanConditionsStatus.value
         if (conditions is DataStatus.Success) {
             val data = conditions.data
             data?.let {
-                if (amount < it.maxAmount) {
+                if (amount > it.maxAmount) {
                     _wrongFieldsEvent(FieldsError.LARGE_AMOUNT)
                     return false
                 }

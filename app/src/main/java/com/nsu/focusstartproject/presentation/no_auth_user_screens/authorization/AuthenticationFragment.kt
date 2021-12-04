@@ -1,9 +1,6 @@
 package com.nsu.focusstartproject.presentation.no_auth_user_screens.authorization
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -110,6 +107,7 @@ class AuthenticationFragment : Fragment(R.layout.auth_fragment) {
             FieldsError.EMPTY_PASSWORD -> {
                 binding.password.wiggle(WIGGLE_FIELD_TIME)
             }
+            else -> {}
         }
     }
 

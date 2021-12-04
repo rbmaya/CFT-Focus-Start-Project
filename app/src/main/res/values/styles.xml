@@ -20,4 +20,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TextFieldStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

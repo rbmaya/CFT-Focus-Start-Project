@@ -13,8 +13,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Qualifier
-import javax.inject.Scope
 import javax.inject.Singleton
 
 @Module
@@ -58,11 +56,11 @@ class RetrofitModule {
 
     @Singleton
     @Provides
-    @AuthApiQualifier
-    fun provideAuthApi(retrofit: Retrofit): AuthApi = retrofit.create(AuthApi::class.java)
+    fun provideAuthApi(@AuthApiQualifier retrofit: Retrofit): AuthApi =
+        retrofit.create(AuthApi::class.java)
 
     @Singleton
     @Provides
-    @LoanApiQualifier
-    fun provideLoanApi(retrofit: Retrofit): LoanApi = retrofit.create(LoanApi::class.java)
+    fun provideLoanApi(@LoanApiQualifier retrofit: Retrofit): LoanApi =
+        retrofit.create(LoanApi::class.java)
 }

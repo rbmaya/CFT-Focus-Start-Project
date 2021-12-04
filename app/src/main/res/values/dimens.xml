@@ -15,4 +15,6 @@
     <item name="card_elevation" type="dimen">16dp</item>
     <item name="divider_height" type="dimen">3dp</item>
     <item name="new_loan_fragment_padding" type="dimen">32dp</item>
+    <item name="button_padding" type="dimen">15dp</item>
+    <item name="list_item_guideline_margin_start" type="dimen">140dp</item>
 </resources>
