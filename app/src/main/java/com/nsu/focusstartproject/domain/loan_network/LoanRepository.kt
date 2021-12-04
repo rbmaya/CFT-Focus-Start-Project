@@ -7,7 +7,7 @@ import com.nsu.focusstartproject.utils.DataStatus
 
 interface LoanRepository {
 
-    suspend fun getLoan(id: Int): DataStatus<Loan>
+    suspend fun getLoan(id: Long): DataStatus<Loan>
 
     suspend fun getAllLoans(): DataStatus<List<Loan>>
 

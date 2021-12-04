@@ -12,7 +12,7 @@ import retrofit2.http.Path
 interface LoanApi {
 
     @GET("/loans/{id}")
-    suspend fun getLoan(@Path("id") id: Int): Response<Loan>
+    suspend fun getLoan(@Path("id") id: Long): Response<Loan>
 
     @GET("/loans/all")
     suspend fun getAllLoans(): Response<List<Loan>>

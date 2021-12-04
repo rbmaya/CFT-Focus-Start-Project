@@ -21,7 +21,7 @@ class LoanListFragment : Fragment(R.layout.loan_list_fragment) {
     private val binding: LoanListFragmentBinding by viewBinding()
 
     private val loanListAdapter = LoanListAdapter {
-        //TODO navigate
+        viewModel.onLoanClicked(it)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,6 +50,9 @@ class LoanListFragment : Fragment(R.layout.loan_list_fragment) {
         }
         viewModel.navigateToNewLoan.observe(viewLifecycleOwner) {
             navigateToNewLoanFragment()
+        }
+        viewModel.navigateToLoanDetails.observe(viewLifecycleOwner) {
+            navigateToLoanDetailsFragment(it)
         }
     }
 
@@ -96,5 +99,10 @@ class LoanListFragment : Fragment(R.layout.loan_list_fragment) {
 
     private fun navigateToNewLoanFragment() {
         findNavController().navigate(R.id.action_loanListFragment_to_newLoanFragment)
+    }
+
+    private fun navigateToLoanDetailsFragment(id: Long) {
+        val action = LoanListFragmentDirections.actionLoanListFragmentToLoanDetailsFragment(id)
+        findNavController().navigate(action)
     }
 }

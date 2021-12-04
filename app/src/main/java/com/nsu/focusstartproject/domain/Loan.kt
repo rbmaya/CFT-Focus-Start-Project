@@ -1,11 +1,11 @@
 package com.nsu.focusstartproject.domain
 
 data class Loan(
-    val id: Int,
+    val id: Long,
     val amount: Int,
     val date: String,
     val firstName: String,
-    val secondName: String,
+    val lastName: String,
     val percent: Double,
     val period: Int,
     val phoneNumber: String,

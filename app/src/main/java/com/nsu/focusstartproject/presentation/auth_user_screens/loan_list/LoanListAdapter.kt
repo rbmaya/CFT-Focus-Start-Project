@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nsu.focusstartproject.domain.Loan
 
 class LoanListAdapter(
-    private val onClick: () -> Unit
+    private val onClick: (Long) -> Unit
 ) : RecyclerView.Adapter<LoanHolder>() {
 
     var loans: List<Loan> = emptyList()

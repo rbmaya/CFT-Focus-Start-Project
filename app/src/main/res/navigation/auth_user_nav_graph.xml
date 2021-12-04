@@ -8,14 +8,15 @@
     <fragment
         android:id="@+id/loanListFragment"
         android:name="com.nsu.focusstartproject.presentation.auth_user_screens.loan_list.LoanListFragment"
-        android:label="loan_list_fragment"
+        android:label="Loans"
         tools:layout="@layout/loan_list_fragment">
         <action
             android:id="@+id/action_loanListFragment_to_newLoanFragment"
             app:destination="@id/newLoanFragment" />
         <action
             android:id="@+id/action_loanListFragment_to_loanDetailsFragment"
-            app:destination="@id/loanDetailsFragment" />
+            app:destination="@id/loanDetailsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/newLoanFragment"
@@ -25,5 +26,9 @@
     <fragment
         android:id="@+id/loanDetailsFragment"
         android:name="com.nsu.focusstartproject.presentation.auth_user_screens.loan_details.LoanDetailsFragment"
-        android:label="LoanDetailsFragment" />
+        android:label="Loan">
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
 </navigation>

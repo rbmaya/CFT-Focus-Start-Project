@@ -16,7 +16,7 @@ class LoanRepositoryImpl @Inject constructor(
     private val loanDataSource: LoanDataSource
 ) : LoanRepository {
 
-    override suspend fun getLoan(id: Int): DataStatus<Loan> {
+    override suspend fun getLoan(id: Long): DataStatus<Loan> {
         return withContext(Dispatchers.IO) {
             val response = loanDataSource.getLoan(id = id)
             response.toDataStatus()

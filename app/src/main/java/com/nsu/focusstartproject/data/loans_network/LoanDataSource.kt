@@ -7,7 +7,7 @@ import retrofit2.Response
 
 interface LoanDataSource {
 
-    suspend fun getLoan(id: Int): Response<Loan>
+    suspend fun getLoan(id: Long): Response<Loan>
 
     suspend fun getAllLoans(): Response<List<Loan>>
 

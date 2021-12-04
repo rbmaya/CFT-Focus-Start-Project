@@ -12,7 +12,7 @@ class LoanRemoteDataSourceImpl @Inject constructor(
     private val loanApi: LoanApi
 ) : LoanDataSource {
 
-    override suspend fun getLoan(id: Int): Response<Loan> {
+    override suspend fun getLoan(id: Long): Response<Loan> {
         return loanApi.getLoan(id = id)
     }
 

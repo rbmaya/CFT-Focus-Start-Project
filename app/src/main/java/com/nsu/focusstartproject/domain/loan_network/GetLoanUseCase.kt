@@ -9,5 +9,5 @@ import javax.inject.Singleton
 class GetLoanUseCase @Inject constructor(
     private val loanRepository: LoanRepository
 ){
-    suspend operator fun invoke(id: Int): DataStatus<Loan> = loanRepository.getLoan(id = id)
+    suspend operator fun invoke(id: Long): DataStatus<Loan> = loanRepository.getLoan(id = id)
 }

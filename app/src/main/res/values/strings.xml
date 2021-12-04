@@ -33,4 +33,9 @@
     <string name="amount_label">Amount: </string>
     <string name="date_label">Date:</string>
     <string name="state">State</string>
+    <string name="error_loading_loan">Error loading loan details</string>
+    <string name="approved">APPROVED</string>
+    <string name="rejected">REJECTED</string>
+    <string name="percent_formatted">%1$s\%%</string>
+    <string name="period_formatted">%1$s days</string>
 </resources>
