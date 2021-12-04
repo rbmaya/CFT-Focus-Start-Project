@@ -1,9 +1,8 @@
 package com.nsu.focusstartproject.presentation.auth_user_screens.loan_list
 
-import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.nsu.focusstartproject.R
 import com.nsu.focusstartproject.databinding.LoanListItemBinding
@@ -14,7 +13,7 @@ class LoanHolder(
     private val onClick: (Long) -> (Unit)
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    private val resources: Context = binding.root.context
+    private val resources = binding.root.context.resources
 
     companion object {
         operator fun invoke(
@@ -46,17 +45,16 @@ class LoanHolder(
 
     private fun fillState(loan: Loan) {
         binding.apply {
-            state.text = loan.state
-            val color = when (loan.state) {
+            val drawable = when (loan.state) {
                 resources.getString(R.string.approved) -> {
-                    Color.GREEN
+                    ResourcesCompat.getDrawable(resources, R.drawable.ic_approved, null)
                 }
                 resources.getString(R.string.rejected) -> {
-                    Color.RED
+                    ResourcesCompat.getDrawable(resources, R.drawable.ic_rejected, null)
                 }
-                else -> Color.BLACK
+                else -> ResourcesCompat.getDrawable(resources, R.drawable.ic_in_progress, null)
             }
-            state.setTextColor(color)
+            state.setImageDrawable(drawable)
         }
     }
 }

@@ -20,7 +20,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/top_margin_title"
+                android:layout_marginTop="@dimen/top_margin_descr"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/conditions_available"
                 style="@style/NormalText" />
@@ -104,6 +104,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:layout_marginVertical="@dimen/vertical_margin_button"
                 android:id="@+id/add_loan"
                 style="@style/NormalText"
                 android:padding="@dimen/button_padding"

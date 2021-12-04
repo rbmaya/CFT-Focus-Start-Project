@@ -4,9 +4,11 @@
     <item name="horizontal_margin_fields" type="dimen">30dp</item>
     <item name="bottom_margin_title" type="dimen">30dp</item>
     <item name="top_margin_title" type="dimen">100dp</item>
+    <item name="top_margin_descr" type="dimen">60dp</item>
     <item name="margin_text" type="dimen">6dp</item>
     <item name="top_margin_button" type="dimen">80dp</item>
     <item name="horizontal_margin_button" type="dimen">30dp</item>
+    <item name="vertical_margin_button" type="dimen">12dp</item>
     <item name="margin_floating_button" type="dimen">32dp</item>
     <item name="button_size" type="dimen">70dp</item>
     <item name="progress_bar_track_thickness" type="dimen">6dp</item>
@@ -17,6 +19,9 @@
     <item name="main_padding" type="dimen">32dp</item>
     <item name="small_padding" type="dimen">16dp</item>
     <item name="button_padding" type="dimen">15dp</item>
-    <item name="list_item_guideline_margin_start" type="dimen">120dp</item>
+    <item name="list_item_guideline_margin_start" type="dimen">60dp</item>
     <item name="loan_guideline_margin_start" type="dimen">160dp</item>
+    <dimen name="list_item_margin_horizontal">5dp</dimen>
+    <dimen name="icon_list_size">40dp</dimen>
+    <dimen name="image_loan_size">100dp</dimen>
 </resources>

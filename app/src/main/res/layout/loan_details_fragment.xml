@@ -7,15 +7,16 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:padding="@dimen/small_padding"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="@dimen/small_padding">
+
 
         <androidx.cardview.widget.CardView
-            app:cardUseCompatPadding="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="@dimen/card_elevation"
             app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardUseCompatPadding="true"
             tools:context=".presentation.auth_user_screens.loan_details.LoanDetailsFragment">
 
             <TableLayout
@@ -171,6 +172,7 @@
 
 
         </androidx.cardview.widget.CardView>
+
 
     </androidx.core.widget.NestedScrollView>
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FocusStartProject</string>
+    <string name="app_name">YourLoans</string>
     <string name="authorization_text">Authorization</string>
     <string name="username">User name</string>
     <string name="password">Password</string>
@@ -18,11 +18,11 @@
     <string name="period">| %1$s days</string>
     <string name="amount">Amount</string>
     <string name="date">Date</string>
-    <string name="first_name">First name</string>
-    <string name="last_name">Last name</string>
+    <string name="first_name">First name:</string>
+    <string name="last_name">Last name:</string>
     <string name="percent">Percent: </string>
     <string name="period_text_field">Period: </string>
-    <string name="phone_number">Phone number</string>
+    <string name="phone_number">Phone number:</string>
     <string name="create_a_request">Create a request</string>
     <string name="conditions_available">The are conditions available for you:</string>
     <string name="conditions">At %1$s\%% for %2$s days</string>

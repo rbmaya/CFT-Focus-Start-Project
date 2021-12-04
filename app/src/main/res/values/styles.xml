@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="Text">
+        <item name="fontFamily">@font/opensans_regular</item>
+    </style>
+
+    <style name="BoldText">
+        <item name="fontFamily">@font/opensans_bold</item>
+    </style>
+
     <style name="NormalText">
+        <item name="fontFamily">@font/opensans_regular</item>
         <item name="android:textSize">18sp</item>
     </style>
 
     <style name="NormalText.Bold">
-        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/opensans_bold</item>
     </style>
 
     <style name="NormalText.Italic">
-        <item name="android:textStyle">italic</item>
+        <item name="fontFamily">@font/opensans_italic</item>
     </style>
 
     <style name="BigText" parent="NormalText">
@@ -17,11 +27,12 @@
     </style>
 
     <style name="BigText.Bold">
-        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/opensans_bold</item>
     </style>
 
     <style name="TextFieldStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/opensans_regular</item>
     </style>
 
 </resources>

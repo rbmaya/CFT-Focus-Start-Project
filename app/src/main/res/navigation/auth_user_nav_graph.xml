@@ -21,7 +21,6 @@
     <fragment
         android:id="@+id/newLoanFragment"
         android:name="com.nsu.focusstartproject.presentation.auth_user_screens.new_loan.NewLoanFragment"
-        android:label="new_loan_fragment"
         tools:layout="@layout/new_loan_fragment" />
     <fragment
         android:id="@+id/loanDetailsFragment"
