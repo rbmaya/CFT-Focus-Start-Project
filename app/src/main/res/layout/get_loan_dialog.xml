@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="@dimen/main_padding"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="@dimen/alert_dialog_image_size"
+        android:layout_height="@dimen/alert_dialog_image_size"
+        android:src="@drawable/money" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/NormalText.Bold"
+        android:text="@string/get_loan_title"
+        android:gravity="center_horizontal"
+        android:layout_marginVertical="@dimen/vertical_margin_fields" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/NormalText"
+        android:gravity="center_horizontal"
+        android:layout_marginVertical="@dimen/vertical_margin_fields"
+        android:text="@string/get_loan_message" />
+
+</LinearLayout>

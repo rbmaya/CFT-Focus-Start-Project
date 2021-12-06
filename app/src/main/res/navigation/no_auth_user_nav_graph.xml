@@ -8,13 +8,7 @@
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.nsu.focusstartproject.presentation.no_auth_user_screens.registration.RegistrationFragment"
-        android:label="RegistrationFragment" >
-        <action
-            android:id="@+id/action_registrationFragment_to_authFragment"
-            app:destination="@id/authFragment"
-            app:popUpTo="@id/registrationFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        android:label="RegistrationFragment" />
     <fragment
         android:id="@+id/authFragment"
         android:name="com.nsu.focusstartproject.presentation.no_auth_user_screens.authorization.AuthenticationFragment"
@@ -23,9 +17,9 @@
         <action
             android:id="@+id/action_authFragment_to_registrationFragment"
             app:destination="@id/registrationFragment"
-            app:enterAnim="@android:anim/slide_out_right"
-            app:exitAnim="@android:anim/slide_in_left"
-            app:popEnterAnim="@android:anim/slide_out_right"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>

@@ -8,10 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
 
-    <color name="green_light">#27B927</color>
-    <color name="green_1">#00CC00</color>
-    <color name="green_2">#269926</color>
-    <color name="orange_1">#FF7400</color>
-    <color name="orange_2">#A64B00</color>
+    <color name="green_light">#80DE43</color>
+    <color name="green_1">#52BD0D</color>
+    <color name="green_2">#337B04</color>
+    <color name="orange_1">#D7500F</color>
+    <color name="orange_2">#8B3005</color>
 
+    <color name="red">#9E2121</color>
+    <color name="green">#0B8026</color>
 </resources>

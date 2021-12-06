@@ -103,10 +103,11 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                app:icon="@drawable/ic_request"
                 android:layout_marginVertical="@dimen/vertical_margin_button"
                 android:id="@+id/add_loan"
-                style="@style/NormalText"
+                style="@style/TextAppearance.App.Button"
                 android:padding="@dimen/button_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

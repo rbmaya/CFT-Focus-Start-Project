@@ -12,7 +12,7 @@
     <string name="unauthorized_error_body">Authentication required</string>
     <string name="forbidden_error_body">You don\'t have permission to access</string>
     <string name="not_found_error_body">A resource can not be found</string>
-    <string name="unknown_error_body">Unknown error</string>
+    <string name="unknown_error_body">Oops… Something went wrong</string>
     <string name="loan_list">Loan list</string>
     <string name="account">Account</string>
     <string name="period">| %1$s days</string>
@@ -27,8 +27,8 @@
     <string name="conditions_available">The are conditions available for you:</string>
     <string name="conditions">At %1$s\%% for %2$s days</string>
     <string name="amount_helper_text">Maximum: %1$s</string>
-    <string name="error_loading_conditions">"Error loading loan conditions: "</string>
-    <string name="error_creating_loan">Error creating loan request</string>
+    <string name="error_loading_conditions">Unable to load loan terms</string>
+    <string name="error_creating_loan">Unable to create loan request</string>
     <string name="money">%1$s\$</string>
     <string name="amount_label">Amount: </string>
     <string name="date_label">Date:</string>
@@ -38,4 +38,9 @@
     <string name="rejected">REJECTED</string>
     <string name="percent_formatted">%1$s\%%</string>
     <string name="period_formatted">%1$s days</string>
+    <string name="success_loan_request_title">Your loan request has been successfully completed!</string>
+    <string name="success_loan_request_message">Now you can watch the status of the request in the loan list.</string>
+    <string name="get_loan_title">Congratulations! Now you can get a loan.</string>
+    <string name="get_loan_message">Take your passport and come to our bank at the address: Musa Jalil str., 11. We will be waiting for you!</string>
+    <string name="how_to_get_a_loan">How to get a loan?</string>
 </resources>

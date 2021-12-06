@@ -1,14 +1,16 @@
 package com.nsu.focusstartproject.presentation.auth_user_screens.loan_details
 
-import android.graphics.Color
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.nsu.focusstartproject.R
+import com.nsu.focusstartproject.databinding.GetLoanDialogBinding
 import com.nsu.focusstartproject.databinding.LoanDetailsFragmentBinding
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.utils.DataStatus
@@ -28,12 +30,37 @@ class LoanDetailsFragment : Fragment(R.layout.loan_details_fragment) {
         viewModel.loadLoanDetails(navArgs.id)
 
         initObservers()
+        initListeners()
     }
 
     private fun initObservers() {
         viewModel.loanDetailsStatus.observe(viewLifecycleOwner) {
             processData(it)
         }
+        viewModel.showGetLoanInfo.observe(viewLifecycleOwner) {
+            showGetLoanInfo()
+        }
+    }
+
+    private fun initListeners() {
+        binding.howGetLoan.setOnClickListener {
+            showGetLoanAlertDialog()
+        }
+    }
+
+    private fun showGetLoanAlertDialog() {
+        val view: View = GetLoanDialogBinding.inflate(layoutInflater).root
+        AlertDialog.Builder(requireContext())
+            .setView(view)
+            .setPositiveButton("Ok") { dialog, _ ->
+                dialog.cancel()
+            }
+            .create()
+            .show()
+    }
+
+    private fun showGetLoanInfo() {
+        binding.howGetLoan.visibility = View.VISIBLE
     }
 
 
@@ -45,6 +72,9 @@ class LoanDetailsFragment : Fragment(R.layout.loan_details_fragment) {
             is DataStatus.Success -> {
                 binding.loanProgressBar.visibility = View.INVISIBLE
                 dataStatus.data?.let {
+                    if (it.state == getString(R.string.approved)) {
+                        viewModel.onApprovedLoan()
+                    }
                     val formattedLoan = viewModel.formatLoan(it)
                     fillFields(formattedLoan)
                 }
@@ -79,12 +109,12 @@ class LoanDetailsFragment : Fragment(R.layout.loan_details_fragment) {
             state.text = loan.state
             val color = when (loan.state) {
                 resources.getString(R.string.approved) -> {
-                    Color.GREEN
+                    ResourcesCompat.getColor(resources, R.color.green, null)
                 }
                 resources.getString(R.string.rejected) -> {
-                    Color.RED
+                    ResourcesCompat.getColor(resources, R.color.red, null)
                 }
-                else -> Color.BLACK
+                else -> ResourcesCompat.getColor(resources, R.color.black, null)
             }
             state.setTextColor(color)
         }
@@ -93,16 +123,16 @@ class LoanDetailsFragment : Fragment(R.layout.loan_details_fragment) {
     private fun processErrorCode(errorCode: ErrorCode, message: String) {
         when (errorCode) {
             ErrorCode.UNAUTHORIZED -> {
-                showMessage("$message ${getString(R.string.unauthorized_error_body)}")
+                showMessage("${getString(R.string.unauthorized_error_body)} $message")
             }
             ErrorCode.FORBIDDEN -> {
-                showMessage("$message ${getString(R.string.forbidden_error_body)}")
+                showMessage("${getString(R.string.forbidden_error_body)} $message")
             }
             ErrorCode.NOT_FOUND -> {
-                showMessage("$message ${getString(R.string.not_found_error_body)}")
+                showMessage("${getString(R.string.not_found_error_body)} $message")
             }
             ErrorCode.UNKNOWN -> {
-                showMessage("$message ${getString(R.string.unknown_error_body)}")
+                showMessage("${getString(R.string.unknown_error_body)} $message")
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.nsu.focusstartproject.presentation.auth_user_screens.new_loan
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,11 +11,13 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.nsu.focusstartproject.R
 import com.nsu.focusstartproject.databinding.NewLoanFragmentBinding
+import com.nsu.focusstartproject.databinding.SuccessLoanRequestDialogBinding
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.domain.LoanCondition
 import com.nsu.focusstartproject.utils.DataStatus
 import com.nsu.focusstartproject.utils.ErrorCode
 import com.nsu.focusstartproject.utils.FieldsError
+import com.nsu.focusstartproject.utils.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,6 +41,7 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
                 amountLayout.error = null
             }
             addLoan.setOnClickListener {
+                hideKeyboard()
                 viewModel.createLoanRequest(
                     amount = Integer.parseInt(amount.text.toString()),
                     firstName = firstName.text.toString(),
@@ -58,9 +62,23 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
         viewModel.loanRequestStatus.observe(viewLifecycleOwner) {
             processData(it)
         }
+        viewModel.showSuccessfulRequest.observe(viewLifecycleOwner) {
+            showAlertDialogSuccessfulRequest()
+        }
         viewModel.navigateToLoanList.observe(viewLifecycleOwner) {
             navigateToLoanList()
         }
+    }
+
+    private fun showAlertDialogSuccessfulRequest() {
+        val view: View = SuccessLoanRequestDialogBinding.inflate(layoutInflater).root
+        AlertDialog.Builder(requireContext())
+            .setView(view)
+            .setPositiveButton("Ok") { dialog, _ ->
+                dialog.cancel()
+            }
+            .create()
+            .show()
     }
 
     private fun processData(dataStatus: DataStatus<Loan>) {
@@ -130,16 +148,16 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
     private fun processErrorCode(errorCode: ErrorCode, message: String) {
         when (errorCode) {
             ErrorCode.UNAUTHORIZED -> {
-                showMessage("$message ${getString(R.string.unauthorized_error_body)}")
+                showMessage("${getString(R.string.unauthorized_error_body)} $message")
             }
             ErrorCode.FORBIDDEN -> {
-                showMessage("$message ${getString(R.string.forbidden_error_body)}")
+                showMessage("${getString(R.string.forbidden_error_body)} $message")
             }
             ErrorCode.NOT_FOUND -> {
-                showMessage("$message ${getString(R.string.not_found_error_body)}")
+                showMessage("${getString(R.string.not_found_error_body)} $message")
             }
             ErrorCode.UNKNOWN -> {
-                showMessage("$message ${getString(R.string.unknown_error_body)}")
+                showMessage("${getString(R.string.unknown_error_body)} $message")
             }
         }
     }

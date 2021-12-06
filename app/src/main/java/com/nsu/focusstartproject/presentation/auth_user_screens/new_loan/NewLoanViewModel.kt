@@ -35,6 +35,9 @@ class NewLoanViewModel @Inject constructor(
     private val _navigateToLoanList = LiveEvent()
     val navigateToLoanList: LiveData<Unit> = _navigateToLoanList
 
+    private val _showSuccessfulRequest = LiveEvent()
+    val showSuccessfulRequest: LiveData<Unit> = _showSuccessfulRequest
+
     private val _wrongFieldsEvent = SingleLiveEvent<FieldsError>()
     val wrongFieldsEvent: LiveData<FieldsError> = _wrongFieldsEvent
 
@@ -57,6 +60,7 @@ class NewLoanViewModel @Inject constructor(
     }
 
     fun onSuccessLoanRequest() {
+        _showSuccessfulRequest()
         _navigateToLoanList()
     }
 

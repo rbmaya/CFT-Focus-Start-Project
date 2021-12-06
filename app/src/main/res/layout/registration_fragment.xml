@@ -75,6 +75,7 @@
 
 
             <Button
+                style="@style/TextAppearance.App.Button"
                 android:id="@+id/sign_up_button"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_size"

@@ -104,7 +104,7 @@ class RegistrationFragment : Fragment(R.layout.registration_fragment) {
     }
 
     private fun navigateToAuthFragment(){
-        findNavController().navigate(R.id.action_registrationFragment_to_authFragment)
+        findNavController().navigateUp()
     }
 
 }

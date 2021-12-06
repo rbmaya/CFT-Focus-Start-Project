@@ -24,4 +24,5 @@
     <dimen name="list_item_margin_horizontal">5dp</dimen>
     <dimen name="icon_list_size">40dp</dimen>
     <dimen name="image_loan_size">100dp</dimen>
+    <dimen name="alert_dialog_image_size">100dp</dimen>
 </resources>

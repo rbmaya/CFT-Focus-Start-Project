@@ -19,156 +19,176 @@
             app:cardUseCompatPadding="true"
             tools:context=".presentation.auth_user_screens.loan_details.LoanDetailsFragment">
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/small_padding">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/small_padding">
 
-                    <TextView
-                        style="@style/NormalText.Bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/amount_label" />
+                    <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
 
-                    <TextView
-                        android:id="@+id/amount"
-                        style="@style/NormalText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        tools:text="15000" />
-                </TableRow>
+                        <TextView
+                            style="@style/NormalText.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/amount_label" />
 
-                <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+                        <TextView
+                            android:id="@+id/amount"
+                            style="@style/NormalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            tools:text="15000" />
+                    </TableRow>
 
-                    <TextView
-                        style="@style/NormalText.Bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/date" />
+                    <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
 
-                    <TextView
-                        android:id="@+id/date"
-                        style="@style/NormalText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        tools:text="24.12.2021" />
-                </TableRow>
+                        <TextView
+                            style="@style/NormalText.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/date" />
 
-                <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+                        <TextView
+                            android:id="@+id/date"
+                            style="@style/NormalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            tools:text="24.12.2021" />
+                    </TableRow>
 
-                    <TextView
-                        style="@style/NormalText.Bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/first_name" />
+                    <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
 
-                    <TextView
-                        android:id="@+id/first_name"
-                        style="@style/NormalText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        tools:text="Иван" />
-                </TableRow>
+                        <TextView
+                            style="@style/NormalText.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/first_name" />
 
-                <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+                        <TextView
+                            android:id="@+id/first_name"
+                            style="@style/NormalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            tools:text="Иван" />
+                    </TableRow>
 
-                    <TextView
-                        style="@style/NormalText.Bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/last_name" />
+                    <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
 
-                    <TextView
-                        android:id="@+id/last_name"
-                        style="@style/NormalText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        tools:text="Иванов" />
-                </TableRow>
+                        <TextView
+                            style="@style/NormalText.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/last_name" />
 
-                <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+                        <TextView
+                            android:id="@+id/last_name"
+                            style="@style/NormalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            tools:text="Иванов" />
+                    </TableRow>
 
-                    <TextView
-                        style="@style/NormalText.Bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/percent" />
+                    <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
 
-                    <TextView
-                        android:id="@+id/percent"
-                        style="@style/NormalText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        tools:text="5%" />
-                </TableRow>
+                        <TextView
+                            style="@style/NormalText.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/percent" />
 
-                <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+                        <TextView
+                            android:id="@+id/percent"
+                            style="@style/NormalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            tools:text="5%" />
+                    </TableRow>
 
-                    <TextView
-                        style="@style/NormalText.Bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/period_text_field" />
+                    <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
 
-                    <TextView
-                        android:id="@+id/period"
-                        style="@style/NormalText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        tools:text="30 days" />
-                </TableRow>
+                        <TextView
+                            style="@style/NormalText.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/period_text_field" />
 
-                <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+                        <TextView
+                            android:id="@+id/period"
+                            style="@style/NormalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            tools:text="30 days" />
+                    </TableRow>
 
-                    <TextView
-                        style="@style/NormalText.Bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/phone_number" />
+                    <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
 
-                    <TextView
-                        android:id="@+id/phone_number"
-                        style="@style/NormalText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        tools:text="+79234567812" />
-                </TableRow>
+                        <TextView
+                            style="@style/NormalText.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/phone_number" />
 
-                <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
+                        <TextView
+                            android:id="@+id/phone_number"
+                            style="@style/NormalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            tools:text="+79234567812" />
+                    </TableRow>
 
-                    <TextView
-                        style="@style/NormalText.Bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="@string/state" />
+                    <TableRow android:layout_marginVertical="@dimen/vertical_margin_fields">
 
-                    <TextView
-                        android:id="@+id/state"
-                        style="@style/NormalText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        tools:text="APPROVED" />
-                </TableRow>
+                        <TextView
+                            style="@style/NormalText.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/state" />
 
-            </TableLayout>
+                        <TextView
+                            android:id="@+id/state"
+                            style="@style/NormalText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            tools:text="APPROVED" />
+                    </TableRow>
+
+                </TableLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:visibility="gone"
+                    app:icon="@drawable/ic_info"
+                    android:layout_marginVertical="@dimen/vertical_margin_button"
+                    android:id="@+id/how_get_loan"
+                    style="@style/TextAppearance.App.Button"
+                    android:padding="@dimen/button_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="@dimen/horizontal_margin_button"
+                    android:text="@string/how_to_get_a_loan" />
+
+            </LinearLayout>
 
 
         </androidx.cardview.widget.CardView>

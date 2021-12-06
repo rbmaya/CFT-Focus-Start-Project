@@ -96,6 +96,7 @@
                 app:layout_constraintTop_toBottomOf="@id/password_layout" />
 
             <Button
+                style="@style/TextAppearance.App.Button"
                 android:id="@+id/sign_in_button"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_size"
