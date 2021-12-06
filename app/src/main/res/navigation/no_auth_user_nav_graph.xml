@@ -13,7 +13,7 @@
         android:id="@+id/authFragment"
         android:name="com.nsu.focusstartproject.presentation.no_auth_user_screens.authorization.AuthenticationFragment"
         android:label="auth_fragment"
-        tools:layout="@layout/auth_fragment" >
+        tools:layout="@layout/auth_fragment">
         <action
             android:id="@+id/action_authFragment_to_registrationFragment"
             app:destination="@id/registrationFragment"
@@ -21,5 +21,12 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_authFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.nsu.focusstartproject.presentation.onboarding.OnboardingFragment"
+        android:label="OnboardingFragment" />
 </navigation>

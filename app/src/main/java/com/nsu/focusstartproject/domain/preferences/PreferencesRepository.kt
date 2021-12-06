@@ -6,4 +6,8 @@ interface PreferencesRepository {
     suspend fun setToken(token: String)
 
     suspend fun deleteToken()
+
+    suspend fun isFirstEnter(): Boolean
+
+    suspend fun setFirstEnter(isFirst: Boolean)
 }

@@ -2,6 +2,7 @@ package com.nsu.focusstartproject.data.preferences
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +20,7 @@ class PreferencesDataSourceImpl @Inject constructor(
 
     companion object{
         val TOKEN = stringPreferencesKey("TOKEN")
+        val FIRST_ENTER = booleanPreferencesKey("FIRST_ENTER")
     }
 
     override suspend fun getToken(): Flow<String> {
@@ -41,6 +43,22 @@ class PreferencesDataSourceImpl @Inject constructor(
         withContext(Dispatchers.IO) {
             dataStore.edit { prefs ->
                 prefs -= TOKEN
+            }
+        }
+    }
+
+    override suspend fun isFirstEnter(): Flow<Boolean> {
+        return withContext(Dispatchers.IO) {
+            dataStore.data.map { preferences ->
+                preferences[FIRST_ENTER] ?: true
+            }
+        }
+    }
+
+    override suspend fun setFirstEnter(isFirst: Boolean) {
+        withContext(Dispatchers.IO) {
+            dataStore.edit { preferences ->
+                preferences[FIRST_ENTER] = isFirst
             }
         }
     }

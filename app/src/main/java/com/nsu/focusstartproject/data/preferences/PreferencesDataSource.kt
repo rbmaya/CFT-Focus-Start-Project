@@ -8,4 +8,8 @@ interface PreferencesDataSource {
     suspend fun setToken(token: String)
 
     suspend fun deleteToken()
+
+    suspend fun isFirstEnter(): Flow<Boolean>
+
+    suspend fun setFirstEnter(isFirst: Boolean)
 }

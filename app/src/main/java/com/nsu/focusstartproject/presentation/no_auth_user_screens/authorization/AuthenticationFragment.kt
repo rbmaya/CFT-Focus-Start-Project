@@ -51,14 +51,17 @@ class AuthenticationFragment : Fragment(R.layout.auth_fragment) {
         viewModel.authenticationStatus.observe(viewLifecycleOwner){
             processAuthenticationState(it)
         }
-        viewModel.wrongFieldsEvent.observe(viewLifecycleOwner){
+        viewModel.wrongFieldsEvent.observe(viewLifecycleOwner) {
             processFieldsError(it)
         }
-        viewModel.navigateToMainScreen.observe(viewLifecycleOwner){
+        viewModel.navigateToMainScreen.observe(viewLifecycleOwner) {
             navigateToAuthUserFragment()
         }
-        viewModel.navigateToSignUpScreen.observe(viewLifecycleOwner){
+        viewModel.navigateToSignUpScreen.observe(viewLifecycleOwner) {
             navigateToRegistrationFragment()
+        }
+        viewModel.navigateToOnboardingScreen.observe(viewLifecycleOwner) {
+            navigateToOnboardingFragment()
         }
     }
 
@@ -111,11 +114,15 @@ class AuthenticationFragment : Fragment(R.layout.auth_fragment) {
         }
     }
 
-    private fun navigateToAuthUserFragment(){
+    private fun navigateToAuthUserFragment() {
         (requireParentFragment().requireParentFragment() as NoAuthUserFragment).navigateToAuthUserFragment()
     }
 
-    private fun navigateToRegistrationFragment(){
+    private fun navigateToOnboardingFragment() {
+        findNavController().navigate(R.id.action_authFragment_to_onboardingFragment)
+    }
+
+    private fun navigateToRegistrationFragment() {
         findNavController().navigate(R.id.action_authFragment_to_registrationFragment)
     }
 }

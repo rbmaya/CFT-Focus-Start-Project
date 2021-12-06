@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.nsu.focusstartproject.domain.UserInfo
 import com.nsu.focusstartproject.domain.auth.SignInUseCase
 import com.nsu.focusstartproject.domain.preferences.GetTokenUseCase
+import com.nsu.focusstartproject.domain.preferences.IsFirstEnterUseCase
 import com.nsu.focusstartproject.domain.preferences.SetTokenUseCase
 import com.nsu.focusstartproject.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +20,8 @@ import javax.inject.Inject
 class AuthenticationViewModel @Inject constructor(
     private val getTokenUseCase: GetTokenUseCase,
     private val setTokenUseCase: SetTokenUseCase,
-    private val signInUseCase: SignInUseCase
+    private val signInUseCase: SignInUseCase,
+    private val isFirstEnterUseCase: IsFirstEnterUseCase
 ) : ViewModel() {
 
     companion object {
@@ -31,6 +33,9 @@ class AuthenticationViewModel @Inject constructor(
 
     private val _navigateToMainScreen = LiveEvent()
     val navigateToMainScreen: LiveData<Unit> = _navigateToMainScreen
+
+    private val _navigateToOnboardingScreen = LiveEvent()
+    val navigateToOnboardingScreen: LiveData<Unit> = _navigateToOnboardingScreen
 
     private val _navigateToSignUpScreen = LiveEvent()
     val navigateToSignUpScreen: LiveData<Unit> = _navigateToSignUpScreen
@@ -61,12 +66,20 @@ class AuthenticationViewModel @Inject constructor(
                 is DataStatus.Error -> {
                     _authenticationStatus.value = token
                 }
+                else -> {}
             }
         }
     }
 
     fun onSuccessSignIn() {
-        _navigateToMainScreen()
+        viewModelScope.launch {
+            val isFirstEnter = isFirstEnterUseCase()
+            if (isFirstEnter) {
+                _navigateToOnboardingScreen()
+            } else {
+                _navigateToMainScreen()
+            }
+        }
     }
 
     fun onRegisterButtonClicked() {

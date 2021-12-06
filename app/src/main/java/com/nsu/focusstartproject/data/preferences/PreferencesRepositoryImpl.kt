@@ -1,7 +1,6 @@
 package com.nsu.focusstartproject.data.preferences
 
 import com.nsu.focusstartproject.domain.preferences.PreferencesRepository
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,5 +20,13 @@ class PreferencesRepositoryImpl @Inject constructor(
 
     override suspend fun deleteToken() {
         return preferencesDataSource.deleteToken()
+    }
+
+    override suspend fun isFirstEnter(): Boolean {
+        return preferencesDataSource.isFirstEnter().first()
+    }
+
+    override suspend fun setFirstEnter(isFirst: Boolean) {
+        preferencesDataSource.setFirstEnter(isFirst = isFirst)
     }
 }

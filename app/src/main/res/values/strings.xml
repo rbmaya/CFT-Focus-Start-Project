@@ -43,4 +43,8 @@
     <string name="get_loan_title">Congratulations! Now you can get a loan.</string>
     <string name="get_loan_message">Take your passport and come to our bank at the address: Musa Jalil str., 11. We will be waiting for you!</string>
     <string name="how_to_get_a_loan">How to get a loan?</string>
+    <string name="page_number">%1$s</string>
+    <string name="text_onboarding_slide_one">You can create a new loan request by clicking on the plus.</string>
+    <string name="text_onboarding_slide_two">You can view the status of your requests on the main screen.</string>
+    <string name="text_onboarding_slide_three">You can change the settings by clicking on the account icon below.</string>
 </resources>
