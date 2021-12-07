@@ -64,9 +64,15 @@ class NewLoanViewModel @Inject constructor(
         _navigateToLoanList()
     }
 
-    fun createLoanRequest(amount: Int, firstName: String, lastName: String, phoneNumber: String) {
+    fun createLoanRequest(amount: Int?, firstName: String, lastName: String, phoneNumber: String) {
         viewModelScope.launch(excHandler) {
-            if (validateFields(amount)) {
+            if (validateFields(
+                    amount = amount,
+                    firstName = firstName,
+                    lastName = lastName,
+                    phoneNumber = phoneNumber
+                )
+            ) {
                 _loanRequestStatus.value = DataStatus.Loading
                 val conditions = _loanConditionsStatus.value as DataStatus.Success
                 conditions.data?.let {
@@ -85,7 +91,33 @@ class NewLoanViewModel @Inject constructor(
         }
     }
 
-    private fun validateFields(amount: Int): Boolean {
+    private fun validateFields(
+        amount: Int?,
+        firstName: String,
+        lastName: String,
+        phoneNumber: String
+    ): Boolean {
+        amount?.let {
+            if (!checkAmount(amount = it)) {
+                return false
+            }
+        }
+        if (firstName.isBlank()) {
+            _wrongFieldsEvent(FieldsError.EMPTY_FIRST_NAME)
+            return false
+        }
+        if (lastName.isBlank()) {
+            _wrongFieldsEvent(FieldsError.EMPTY_LAST_NAME)
+            return false
+        }
+        if (phoneNumber.isBlank()) {
+            _wrongFieldsEvent(FieldsError.EMPTY_PHONE_NUMBER)
+            return false
+        }
+        return true
+    }
+
+    private fun checkAmount(amount: Int): Boolean {
         val conditions = _loanConditionsStatus.value
         if (conditions is DataStatus.Success) {
             val data = conditions.data

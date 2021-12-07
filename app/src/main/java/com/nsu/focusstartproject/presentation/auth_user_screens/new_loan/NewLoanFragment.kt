@@ -14,6 +14,7 @@ import com.nsu.focusstartproject.databinding.NewLoanFragmentBinding
 import com.nsu.focusstartproject.databinding.SuccessLoanRequestDialogBinding
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.domain.LoanCondition
+import com.nsu.focusstartproject.utils.Animations.wiggle
 import com.nsu.focusstartproject.utils.DataStatus
 import com.nsu.focusstartproject.utils.ErrorCode
 import com.nsu.focusstartproject.utils.FieldsError
@@ -25,6 +26,10 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
 
     private val viewModel: NewLoanViewModel by viewModels()
     private val binding: NewLoanFragmentBinding by viewBinding()
+
+    companion object {
+        const val WIGGLE_FIELD_TIME = 500L
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,8 +47,13 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
             }
             addLoan.setOnClickListener {
                 hideKeyboard()
+                val amount: Int? = try {
+                    Integer.parseInt(amount.text.toString())
+                } catch (exc: Exception) {
+                    null
+                }
                 viewModel.createLoanRequest(
-                    amount = Integer.parseInt(amount.text.toString()),
+                    amount = amount,
                     firstName = firstName.text.toString(),
                     lastName = lastName.text.toString(),
                     phoneNumber = phoneNumber.text.toString()
@@ -74,7 +84,7 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
         val view: View = SuccessLoanRequestDialogBinding.inflate(layoutInflater).root
         AlertDialog.Builder(requireContext())
             .setView(view)
-            .setPositiveButton("Ok") { dialog, _ ->
+            .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
                 dialog.cancel()
             }
             .create()
@@ -130,6 +140,15 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
         when (fieldsError) {
             FieldsError.LARGE_AMOUNT -> {
                 binding.amountLayout.error = binding.amountLayout.helperText
+            }
+            FieldsError.EMPTY_FIRST_NAME -> {
+                binding.firstName.wiggle(WIGGLE_FIELD_TIME)
+            }
+            FieldsError.EMPTY_LAST_NAME -> {
+                binding.lastName.wiggle(WIGGLE_FIELD_TIME)
+            }
+            FieldsError.EMPTY_PHONE_NUMBER -> {
+                binding.phoneNumber.wiggle(WIGGLE_FIELD_TIME)
             }
             else -> {}
         }
