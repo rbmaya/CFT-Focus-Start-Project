@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loanListFragment"
         android:name="com.nsu.focusstartproject.presentation.auth_user_screens.loan_list.LoanListFragment"
-        android:label="Loans"
+        android:label="@string/loans"
         tools:layout="@layout/loan_list_fragment">
         <action
             android:id="@+id/action_loanListFragment_to_newLoanFragment"
@@ -29,14 +29,19 @@
     <fragment
         android:id="@+id/newLoanFragment"
         android:name="com.nsu.focusstartproject.presentation.auth_user_screens.new_loan.NewLoanFragment"
-        android:label="New loan"
+        android:label="@string/new_loan"
         tools:layout="@layout/new_loan_fragment" />
     <fragment
         android:id="@+id/loanDetailsFragment"
         android:name="com.nsu.focusstartproject.presentation.auth_user_screens.loan_details.LoanDetailsFragment"
-        android:label="Loan">
+        android:label="@string/loan">
         <argument
             android:name="id"
             app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/accountSettingsFragment"
+        android:name="com.nsu.focusstartproject.presentation.auth_user_screens.account_settings.AccountSettingsFragment"
+        android:label="@string/account"
+        tools:layout="@layout/account_settings_fragment" />
 </navigation>

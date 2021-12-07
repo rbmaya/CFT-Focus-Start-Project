@@ -27,4 +27,5 @@
     <dimen name="alert_dialog_image_size">100dp</dimen>
     <dimen name="bottom_image_margin">170dp</dimen>
     <dimen name="onboarding_image_size">200dp</dimen>
+    <dimen name="account_image_size">70dp</dimen>
 </resources>

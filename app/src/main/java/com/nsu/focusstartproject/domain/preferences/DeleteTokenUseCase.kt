@@ -7,5 +7,5 @@ import javax.inject.Singleton
 class DeleteTokenUseCase @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ){
-    suspend fun invoke() = preferencesRepository.deleteToken()
+    suspend operator fun invoke() = preferencesRepository.deleteToken()
 }

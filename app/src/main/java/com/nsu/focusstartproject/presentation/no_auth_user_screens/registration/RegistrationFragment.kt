@@ -100,6 +100,7 @@ class RegistrationFragment : Fragment(R.layout.registration_fragment) {
             FieldsError.EMPTY_PASSWORD -> {
                 binding.password.wiggle(WIGGLE_FIELD_TIME)
             }
+            else -> {}
         }
     }
 
