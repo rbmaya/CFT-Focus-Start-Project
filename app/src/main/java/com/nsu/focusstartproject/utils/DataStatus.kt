@@ -1,11 +1,12 @@
 package com.nsu.focusstartproject.utils
 
+import com.nsu.focusstartproject.utils.errors_processing.ErrorCode
 import retrofit2.Response
 
 sealed class DataStatus<out R> {
     object Loading: DataStatus<Nothing>()
-    data class Success<out T>(val data: T? = null): DataStatus<T>()
-    data class Error(val message: String? = null, val code: ErrorCode? = null): DataStatus<Nothing>()
+    data class Success<out T>(val data: T? = null) : DataStatus<T>()
+    data class Error(val code: ErrorCode? = null) : DataStatus<Nothing>()
 }
 
 fun <T> Response<T>.toDataStatus(): DataStatus<T>{

@@ -10,7 +10,11 @@ import com.nsu.focusstartproject.domain.LoanCondition
 import com.nsu.focusstartproject.domain.LoanRequest
 import com.nsu.focusstartproject.domain.loan_network.CreateLoanRequestUseCase
 import com.nsu.focusstartproject.domain.loan_network.GetLoanConditionsUseCase
-import com.nsu.focusstartproject.utils.*
+import com.nsu.focusstartproject.utils.DataStatus
+import com.nsu.focusstartproject.utils.LiveEvent
+import com.nsu.focusstartproject.utils.SingleLiveEvent
+import com.nsu.focusstartproject.utils.errors_processing.toErrorCode
+import com.nsu.focusstartproject.utils.fields_processing.FieldsError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -41,15 +45,22 @@ class NewLoanViewModel @Inject constructor(
     private val _wrongFieldsEvent = SingleLiveEvent<FieldsError>()
     val wrongFieldsEvent: LiveData<FieldsError> = _wrongFieldsEvent
 
-    private val excHandler = CoroutineExceptionHandler { _, throwable ->
-        throwable.message?.let {
-            Log.e(TAG, it)
-            _loanRequestStatus.value = DataStatus.Error(code = ErrorCode.UNKNOWN)
+    private val excHandlerLoanRequest = CoroutineExceptionHandler { _, throwable ->
+        throwable.message?.let { Log.e(TAG, it) }
+        throwable.let {
+            _loanRequestStatus.value = DataStatus.Error(it.toErrorCode())
+        }
+    }
+
+    private val excHandlerLoanConditions = CoroutineExceptionHandler { _, throwable ->
+        throwable.message?.let { Log.e(TAG, it) }
+        throwable.let {
+            _loanConditionsStatus.value = DataStatus.Error(it.toErrorCode())
         }
     }
 
     fun initLoanConditions() {
-        viewModelScope.launch(excHandler) {
+        viewModelScope.launch(excHandlerLoanConditions) {
             val conditions = getLoanConditionsUseCase()
             _loanConditionsStatus.value = conditions
         }
@@ -65,7 +76,7 @@ class NewLoanViewModel @Inject constructor(
     }
 
     fun createLoanRequest(amount: Int?, firstName: String, lastName: String, phoneNumber: String) {
-        viewModelScope.launch(excHandler) {
+        viewModelScope.launch(excHandlerLoanRequest) {
             if (validateFields(
                     amount = amount,
                     firstName = firstName,

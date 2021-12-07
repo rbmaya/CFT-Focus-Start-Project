@@ -27,13 +27,13 @@
     <string name="conditions_available">The are conditions available for you:</string>
     <string name="conditions">At %1$s\%% for %2$s days</string>
     <string name="amount_helper_text">Maximum: %1$s</string>
-    <string name="error_loading_conditions">Unable to load loan conditions</string>
-    <string name="error_creating_loan">Unable to create loan request</string>
+    <string name="error_loading_conditions">Unable to load loan conditions: %1$s</string>
+    <string name="error_creating_loan">Unable to create loan request: %1$s</string>
     <string name="money">%1$s\$</string>
     <string name="amount_label">Amount: </string>
     <string name="date_label">Date:</string>
     <string name="state">State</string>
-    <string name="error_loading_loan">Error loading loan details</string>
+    <string name="error_loading_loan">Error loading loan details: %1$s</string>
     <string name="approved" translatable="false">APPROVED</string>
     <string name="rejected" translatable="false">REJECTED</string>
     <string name="percent_formatted" translatable="false">%1$s\%%</string>
@@ -56,4 +56,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="ok">Ok</string>
+    <string name="no_internet_available">No internet available, \nplease check your connected WiFi or Mobile network</string>
+    <string name="unknown_host">The host name doesn\'t exist</string>
+    <string name="no_network_available">No network available, \nplease check your WiFi or Mobile network connection</string>
+    <string name="socket_timeout">Timeout expired</string>
 </resources>

@@ -9,9 +9,9 @@ import androidx.lifecycle.viewModelScope
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.domain.loan_network.GetLoanUseCase
 import com.nsu.focusstartproject.utils.DataStatus
-import com.nsu.focusstartproject.utils.ErrorCode
-import com.nsu.focusstartproject.utils.IsoDateFormatter
 import com.nsu.focusstartproject.utils.LiveEvent
+import com.nsu.focusstartproject.utils.errors_processing.toErrorCode
+import com.nsu.focusstartproject.utils.fields_processing.IsoDateFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -33,9 +33,9 @@ class LoanDetailsViewModel @Inject constructor(
     val showGetLoanInfo: LiveData<Unit> = _showGetLoanInfo
 
     private val excHandler = CoroutineExceptionHandler { _, throwable ->
-        throwable.message?.let {
-            Log.e(TAG, it)
-            _loanDetailsStatus.value = DataStatus.Error(code = ErrorCode.UNKNOWN)
+        throwable.message?.let { Log.e(TAG, it) }
+        throwable.let {
+            _loanDetailsStatus.value = DataStatus.Error(it.toErrorCode())
         }
     }
 

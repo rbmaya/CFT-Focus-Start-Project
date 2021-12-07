@@ -1,4 +1,4 @@
-package com.nsu.focusstartproject.utils
+package com.nsu.focusstartproject.utils.view_actions
 
 import android.animation.ObjectAnimator
 import android.view.View

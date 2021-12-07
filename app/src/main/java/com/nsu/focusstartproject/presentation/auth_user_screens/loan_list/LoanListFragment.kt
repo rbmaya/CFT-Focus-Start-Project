@@ -11,14 +11,18 @@ import com.nsu.focusstartproject.R
 import com.nsu.focusstartproject.databinding.LoanListFragmentBinding
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.utils.DataStatus
-import com.nsu.focusstartproject.utils.ErrorCode
+import com.nsu.focusstartproject.utils.errors_processing.ErrorCodeProcessor
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoanListFragment : Fragment(R.layout.loan_list_fragment) {
 
     private val viewModel: LoanListViewModel by viewModels()
     private val binding: LoanListFragmentBinding by viewBinding()
+
+    @Inject
+    lateinit var errorCodeProcessor: ErrorCodeProcessor
 
     private val loanListAdapter = LoanListAdapter {
         viewModel.onLoanClicked(it)
@@ -71,24 +75,10 @@ class LoanListFragment : Fragment(R.layout.loan_list_fragment) {
             }
             is DataStatus.Error -> {
                 binding.swipeToRefreshLayout.isRefreshing = false
-                dataStatus.code?.let { processErrorCode(it) }
-            }
-        }
-    }
-
-    private fun processErrorCode(errorCode: ErrorCode) {
-        when (errorCode) {
-            ErrorCode.UNAUTHORIZED -> {
-                showMessage(getString(R.string.unauthorized_error_body))
-            }
-            ErrorCode.FORBIDDEN -> {
-                showMessage(getString(R.string.forbidden_error_body))
-            }
-            ErrorCode.NOT_FOUND -> {
-                showMessage(getString(R.string.not_found_error_body))
-            }
-            ErrorCode.UNKNOWN -> {
-                showMessage(getString(R.string.unknown_error_body))
+                dataStatus.code?.let {
+                    val message = errorCodeProcessor.processErrorCode(it)
+                    showMessage(message)
+                }
             }
         }
     }

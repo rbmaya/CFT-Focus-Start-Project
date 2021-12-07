@@ -14,8 +14,9 @@ import com.nsu.focusstartproject.databinding.GetLoanDialogBinding
 import com.nsu.focusstartproject.databinding.LoanDetailsFragmentBinding
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.utils.DataStatus
-import com.nsu.focusstartproject.utils.ErrorCode
+import com.nsu.focusstartproject.utils.errors_processing.ErrorCodeProcessor
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -23,6 +24,9 @@ class LoanDetailsFragment : Fragment(R.layout.loan_details_fragment) {
     private val viewModel: LoanDetailsViewModel by viewModels()
     private val binding: LoanDetailsFragmentBinding by viewBinding()
     private val navArgs: LoanDetailsFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var errorCodeProcessor: ErrorCodeProcessor
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -82,10 +86,8 @@ class LoanDetailsFragment : Fragment(R.layout.loan_details_fragment) {
             is DataStatus.Error -> {
                 binding.loanProgressBar.visibility = View.INVISIBLE
                 dataStatus.code?.let {
-                    processErrorCode(
-                        errorCode = it,
-                        message = getString(R.string.error_loading_loan)
-                    )
+                    val message = errorCodeProcessor.processErrorCode(it)
+                    showMessage(getString(R.string.error_loading_loan, message))
                 }
             }
         }
@@ -117,23 +119,6 @@ class LoanDetailsFragment : Fragment(R.layout.loan_details_fragment) {
                 else -> ResourcesCompat.getColor(resources, R.color.black, null)
             }
             state.setTextColor(color)
-        }
-    }
-
-    private fun processErrorCode(errorCode: ErrorCode, message: String) {
-        when (errorCode) {
-            ErrorCode.UNAUTHORIZED -> {
-                showMessage("${getString(R.string.unauthorized_error_body)} $message")
-            }
-            ErrorCode.FORBIDDEN -> {
-                showMessage("${getString(R.string.forbidden_error_body)} $message")
-            }
-            ErrorCode.NOT_FOUND -> {
-                showMessage("${getString(R.string.not_found_error_body)} $message")
-            }
-            ErrorCode.UNKNOWN -> {
-                showMessage("${getString(R.string.unknown_error_body)} $message")
-            }
         }
     }
 

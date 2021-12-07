@@ -7,7 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nsu.focusstartproject.domain.UserInfo
 import com.nsu.focusstartproject.domain.auth.SignUpUseCase
-import com.nsu.focusstartproject.utils.*
+import com.nsu.focusstartproject.utils.DataStatus
+import com.nsu.focusstartproject.utils.LiveEvent
+import com.nsu.focusstartproject.utils.SingleLiveEvent
+import com.nsu.focusstartproject.utils.errors_processing.toErrorCode
+import com.nsu.focusstartproject.utils.fields_processing.FieldsError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -33,9 +37,9 @@ class RegistrationViewModel @Inject constructor(
     val wrongFieldsEvent: LiveData<FieldsError> = _wrongFieldsEvent
 
     private val excHandler = CoroutineExceptionHandler { _, throwable ->
-        throwable.message?.let {
-            Log.e(TAG, it)
-            _registrationStatus.value = DataStatus.Error(code = ErrorCode.UNKNOWN)
+        throwable.message?.let { Log.e(TAG, it) }
+        throwable.let {
+            _registrationStatus.value = DataStatus.Error(it.toErrorCode())
         }
     }
 

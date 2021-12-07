@@ -10,7 +10,11 @@ import com.nsu.focusstartproject.domain.auth.SignInUseCase
 import com.nsu.focusstartproject.domain.preferences.GetTokenUseCase
 import com.nsu.focusstartproject.domain.preferences.IsFirstEnterUseCase
 import com.nsu.focusstartproject.domain.preferences.SetTokenUseCase
-import com.nsu.focusstartproject.utils.*
+import com.nsu.focusstartproject.utils.DataStatus
+import com.nsu.focusstartproject.utils.LiveEvent
+import com.nsu.focusstartproject.utils.SingleLiveEvent
+import com.nsu.focusstartproject.utils.errors_processing.toErrorCode
+import com.nsu.focusstartproject.utils.fields_processing.FieldsError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -44,9 +48,9 @@ class AuthenticationViewModel @Inject constructor(
     val wrongFieldsEvent: LiveData<FieldsError> = _wrongFieldsEvent
 
     private val excHandler = CoroutineExceptionHandler { _, throwable ->
-        throwable.message?.let {
-            Log.e(TAG, it)
-            _authenticationStatus.value = DataStatus.Error(code = ErrorCode.UNKNOWN)
+        throwable.message?.let { Log.e(TAG, it) }
+        throwable.let {
+            _authenticationStatus.value = DataStatus.Error(it.toErrorCode())
         }
     }
 

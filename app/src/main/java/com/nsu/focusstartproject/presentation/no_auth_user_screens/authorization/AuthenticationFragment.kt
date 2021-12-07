@@ -10,18 +10,22 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.nsu.focusstartproject.R
 import com.nsu.focusstartproject.databinding.AuthFragmentBinding
 import com.nsu.focusstartproject.presentation.NoAuthUserFragment
-import com.nsu.focusstartproject.utils.Animations.wiggle
 import com.nsu.focusstartproject.utils.DataStatus
-import com.nsu.focusstartproject.utils.ErrorCode
-import com.nsu.focusstartproject.utils.FieldsError
-import com.nsu.focusstartproject.utils.hideKeyboard
+import com.nsu.focusstartproject.utils.errors_processing.ErrorCodeProcessor
+import com.nsu.focusstartproject.utils.fields_processing.FieldsError
+import com.nsu.focusstartproject.utils.view_actions.Animations.wiggle
+import com.nsu.focusstartproject.utils.view_actions.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AuthenticationFragment : Fragment(R.layout.auth_fragment) {
 
     private val viewModel: AuthenticationViewModel by viewModels()
     private val binding: AuthFragmentBinding by viewBinding()
+
+    @Inject
+    lateinit var errorCodeProcessor: ErrorCodeProcessor
 
     companion object {
         const val WIGGLE_FIELD_TIME = 500L
@@ -47,8 +51,8 @@ class AuthenticationFragment : Fragment(R.layout.auth_fragment) {
         initObservers()
     }
 
-    private fun initObservers(){
-        viewModel.authenticationStatus.observe(viewLifecycleOwner){
+    private fun initObservers() {
+        viewModel.authenticationStatus.observe(viewLifecycleOwner) {
             processAuthenticationState(it)
         }
         viewModel.wrongFieldsEvent.observe(viewLifecycleOwner) {
@@ -65,8 +69,8 @@ class AuthenticationFragment : Fragment(R.layout.auth_fragment) {
         }
     }
 
-    private fun processAuthenticationState(dataStatus: DataStatus<Any>){
-        when (dataStatus){
+    private fun processAuthenticationState(dataStatus: DataStatus<Any>) {
+        when (dataStatus) {
             is DataStatus.Loading -> {
                 binding.authorizationProgressBar.visibility = View.VISIBLE
             }
@@ -76,24 +80,10 @@ class AuthenticationFragment : Fragment(R.layout.auth_fragment) {
             }
             is DataStatus.Error -> {
                 binding.authorizationProgressBar.visibility = View.INVISIBLE
-                dataStatus.code?.let { processErrorCode(it) }
-            }
-        }
-    }
-
-    private fun processErrorCode(errorCode: ErrorCode){
-        when (errorCode){
-            ErrorCode.UNAUTHORIZED -> {
-                showMessage(getString(R.string.unauthorized_error_body))
-            }
-            ErrorCode.FORBIDDEN -> {
-                showMessage(getString(R.string.forbidden_error_body))
-            }
-            ErrorCode.NOT_FOUND -> {
-                showMessage(getString(R.string.not_found_error_body))
-            }
-            ErrorCode.UNKNOWN -> {
-                showMessage(getString(R.string.unknown_error_body))
+                dataStatus.code?.let {
+                    val message = errorCodeProcessor.processErrorCode(it)
+                    showMessage(message)
+                }
             }
         }
     }

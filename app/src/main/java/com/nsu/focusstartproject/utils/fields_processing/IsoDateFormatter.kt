@@ -1,4 +1,4 @@
-package com.nsu.focusstartproject.utils
+package com.nsu.focusstartproject.utils.fields_processing
 
 import android.os.Build
 import androidx.annotation.RequiresApi

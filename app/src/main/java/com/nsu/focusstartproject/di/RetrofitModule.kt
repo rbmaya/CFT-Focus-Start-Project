@@ -2,6 +2,7 @@ package com.nsu.focusstartproject.di
 
 import com.nsu.focusstartproject.data.auth.AuthApi
 import com.nsu.focusstartproject.data.loans_network.LoanApi
+import com.nsu.focusstartproject.data.loans_network.NoConnectionInterceptor
 import com.nsu.focusstartproject.data.loans_network.TokenInterceptor
 import dagger.Module
 import dagger.Provides
@@ -22,13 +23,15 @@ class RetrofitModule {
     @Singleton
     @Provides
     @AuthApiQualifier
-    fun provideAuthRetrofit(): Retrofit =
+    fun provideAuthRetrofit(noConnectionInterceptor: NoConnectionInterceptor): Retrofit =
         Retrofit.Builder()
             .client(
                 OkHttpClient.Builder()
                     .addInterceptor(HttpLoggingInterceptor().also {
                         it.level = HttpLoggingInterceptor.Level.BODY
-                    }).readTimeout(1, TimeUnit.MINUTES)
+                    })
+                    .addInterceptor(noConnectionInterceptor)
+                    .readTimeout(15, TimeUnit.SECONDS)
                     .build()
             )
             .addConverterFactory(ScalarsConverterFactory.create())
@@ -39,13 +42,18 @@ class RetrofitModule {
     @Singleton
     @Provides
     @LoanApiQualifier
-    fun provideLoanRetrofit(tokenInterceptor: TokenInterceptor): Retrofit =
+    fun provideLoanRetrofit(
+        noConnectionInterceptor: NoConnectionInterceptor,
+        tokenInterceptor: TokenInterceptor
+    ): Retrofit =
         Retrofit.Builder()
             .client(
                 OkHttpClient.Builder()
                     .addInterceptor(HttpLoggingInterceptor().also {
                         it.level = HttpLoggingInterceptor.Level.BODY
-                    }).readTimeout(1, TimeUnit.MINUTES)
+                    })
+                    .addInterceptor(noConnectionInterceptor)
+                    .readTimeout(15, TimeUnit.SECONDS)
                     .addInterceptor(tokenInterceptor)
                     .build()
             )

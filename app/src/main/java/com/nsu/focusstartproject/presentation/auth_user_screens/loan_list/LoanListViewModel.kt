@@ -8,7 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.domain.loan_network.GetAllLoansUseCase
-import com.nsu.focusstartproject.utils.*
+import com.nsu.focusstartproject.utils.DataStatus
+import com.nsu.focusstartproject.utils.LiveEvent
+import com.nsu.focusstartproject.utils.SingleLiveEvent
+import com.nsu.focusstartproject.utils.errors_processing.toErrorCode
+import com.nsu.focusstartproject.utils.fields_processing.IsoDateFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -33,9 +37,9 @@ class LoanListViewModel @Inject constructor(
     val navigateToLoanDetails: LiveData<Long> = _navigateToLoanDetails
 
     private val excHandler = CoroutineExceptionHandler { _, throwable ->
-        throwable.message?.let {
-            Log.e(TAG, it)
-            _loadDataState.value = DataStatus.Error(code = ErrorCode.UNKNOWN)
+        throwable.message?.let { Log.e(TAG, it) }
+        throwable.let {
+            _loadDataState.value = DataStatus.Error(it.toErrorCode())
         }
     }
 

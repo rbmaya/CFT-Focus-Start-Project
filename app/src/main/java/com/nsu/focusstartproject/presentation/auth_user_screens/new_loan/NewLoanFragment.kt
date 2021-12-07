@@ -14,18 +14,22 @@ import com.nsu.focusstartproject.databinding.NewLoanFragmentBinding
 import com.nsu.focusstartproject.databinding.SuccessLoanRequestDialogBinding
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.domain.LoanCondition
-import com.nsu.focusstartproject.utils.Animations.wiggle
 import com.nsu.focusstartproject.utils.DataStatus
-import com.nsu.focusstartproject.utils.ErrorCode
-import com.nsu.focusstartproject.utils.FieldsError
-import com.nsu.focusstartproject.utils.hideKeyboard
+import com.nsu.focusstartproject.utils.errors_processing.ErrorCodeProcessor
+import com.nsu.focusstartproject.utils.fields_processing.FieldsError
+import com.nsu.focusstartproject.utils.view_actions.Animations.wiggle
+import com.nsu.focusstartproject.utils.view_actions.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
 
     private val viewModel: NewLoanViewModel by viewModels()
     private val binding: NewLoanFragmentBinding by viewBinding()
+
+    @Inject
+    lateinit var errorCodeProcessor: ErrorCodeProcessor
 
     companion object {
         const val WIGGLE_FIELD_TIME = 500L
@@ -103,10 +107,8 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
             is DataStatus.Error -> {
                 binding.newLoanProgressBar.visibility = View.INVISIBLE
                 dataStatus.code?.let {
-                    processErrorCode(
-                        errorCode = it,
-                        message = getString(R.string.error_creating_loan)
-                    )
+                    val message = errorCodeProcessor.processErrorCode(it)
+                    showMessage(getString(R.string.error_creating_loan, message))
                 }
             }
         }
@@ -126,10 +128,8 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
             is DataStatus.Error -> {
                 binding.newLoanProgressBar.visibility = View.INVISIBLE
                 dataStatus.code?.let {
-                    processErrorCode(
-                        errorCode = it,
-                        message = getString(R.string.error_loading_conditions)
-                    )
+                    val message = errorCodeProcessor.processErrorCode(it)
+                    showMessage(getString(R.string.error_loading_conditions, message))
                 }
                 viewModel.onErrorLoadingConditions()
             }
@@ -164,23 +164,6 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
         }
     }
 
-    private fun processErrorCode(errorCode: ErrorCode, message: String) {
-        when (errorCode) {
-            ErrorCode.UNAUTHORIZED -> {
-                showMessage("${getString(R.string.unauthorized_error_body)} $message")
-            }
-            ErrorCode.FORBIDDEN -> {
-                showMessage("${getString(R.string.forbidden_error_body)} $message")
-            }
-            ErrorCode.NOT_FOUND -> {
-                showMessage("${getString(R.string.not_found_error_body)} $message")
-            }
-            ErrorCode.UNKNOWN -> {
-                showMessage("${getString(R.string.unknown_error_body)} $message")
-            }
-        }
-    }
-
     private fun showMessage(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
@@ -188,6 +171,5 @@ class NewLoanFragment : Fragment(R.layout.new_loan_fragment) {
     private fun navigateToLoanList() {
         findNavController().navigateUp()
     }
-
 
 }
