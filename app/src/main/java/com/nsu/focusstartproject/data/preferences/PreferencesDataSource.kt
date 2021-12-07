@@ -12,4 +12,8 @@ interface PreferencesDataSource {
     suspend fun isFirstEnter(): Flow<Boolean>
 
     suspend fun setFirstEnter(isFirst: Boolean)
+
+    suspend fun isDarkMode(): Flow<Boolean>
+
+    suspend fun setDarkMode(isDarkMode: Boolean)
 }

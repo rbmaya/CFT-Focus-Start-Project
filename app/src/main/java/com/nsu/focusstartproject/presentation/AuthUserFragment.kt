@@ -2,14 +2,11 @@ package com.nsu.focusstartproject.presentation
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayout
 import com.nsu.focusstartproject.R
@@ -26,8 +23,19 @@ class AuthUserFragment : Fragment(R.layout.auth_user_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         initNavController()
-        setToolbar()
         initTabListener()
+        initSelectedFragment()
+    }
+
+    private fun initSelectedFragment() {
+        when (navController.currentBackStackEntry?.destination?.label) {
+            requireContext().getString(R.string.loans) -> {
+                binding.tabLayout.getTabAt(0)?.select()
+            }
+            requireContext().getString(R.string.account) -> {
+                binding.tabLayout.getTabAt(1)?.select()
+            }
+        }
     }
 
     private fun initNavController() {
@@ -59,18 +67,6 @@ class AuthUserFragment : Fragment(R.layout.auth_user_fragment) {
         })
     }
 
-    private fun setToolbar() {
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.mainToolbar)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.loanListFragment,
-                R.id.accountSettingsFragment
-            )
-        )
-
-        binding.mainToolbar.setupWithNavController(navController, appBarConfiguration)
-    }
-
     private fun navigateToLoanListFragment() {
         val navOptions = NavOptions.Builder()
             .setEnterAnim(R.anim.slide_in_right)
@@ -88,6 +84,7 @@ class AuthUserFragment : Fragment(R.layout.auth_user_fragment) {
             .build()
 
         clearBackStack()
+
         navController.navigate(R.id.accountSettingsFragment, null, navOptions)
     }
 

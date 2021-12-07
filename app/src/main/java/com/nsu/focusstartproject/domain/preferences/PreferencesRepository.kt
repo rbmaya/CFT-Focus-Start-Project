@@ -10,4 +10,8 @@ interface PreferencesRepository {
     suspend fun isFirstEnter(): Boolean
 
     suspend fun setFirstEnter(isFirst: Boolean)
+
+    suspend fun isDarkMode(): Boolean
+
+    suspend fun setDarkMode(isDarkMode: Boolean)
 }

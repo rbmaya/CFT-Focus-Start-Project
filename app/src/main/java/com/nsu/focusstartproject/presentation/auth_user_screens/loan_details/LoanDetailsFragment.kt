@@ -116,7 +116,7 @@ class LoanDetailsFragment : Fragment(R.layout.loan_details_fragment) {
                 resources.getString(R.string.rejected) -> {
                     ResourcesCompat.getColor(resources, R.color.red, null)
                 }
-                else -> ResourcesCompat.getColor(resources, R.color.black, null)
+                else -> ResourcesCompat.getColor(resources, R.color.orange, null)
             }
             state.setTextColor(color)
         }

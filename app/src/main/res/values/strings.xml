@@ -60,4 +60,5 @@
     <string name="unknown_host">The host name doesn\'t exist</string>
     <string name="no_network_available">No network available, \nplease check your WiFi or Mobile network connection</string>
     <string name="socket_timeout">Timeout expired</string>
+    <string name="dark_mode">Dark mode</string>
 </resources>

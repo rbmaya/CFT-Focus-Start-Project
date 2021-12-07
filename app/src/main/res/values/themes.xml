@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.FocusStartProject" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_1</item>
-        <item name="colorPrimaryVariant">@color/green_2</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/green_600</item>
+        <item name="colorPrimaryVariant">@color/green_800</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/orange_1</item>
-        <item name="colorSecondaryVariant">@color/orange_2</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/violet_700</item>
+        <item name="colorSecondaryVariant">@color/violet_800</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

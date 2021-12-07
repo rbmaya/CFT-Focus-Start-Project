@@ -21,6 +21,7 @@ class PreferencesDataSourceImpl @Inject constructor(
     companion object{
         val TOKEN = stringPreferencesKey("TOKEN")
         val FIRST_ENTER = booleanPreferencesKey("FIRST_ENTER")
+        val DARK_MODE = booleanPreferencesKey("DARK_MODE")
     }
 
     override suspend fun getToken(): Flow<String> {
@@ -63,4 +64,19 @@ class PreferencesDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun isDarkMode(): Flow<Boolean> {
+        return withContext(Dispatchers.IO) {
+            dataStore.data.map { preferences ->
+                preferences[DARK_MODE] ?: false
+            }
+        }
+    }
+
+    override suspend fun setDarkMode(isDarkMode: Boolean) {
+        return withContext(Dispatchers.IO) {
+            dataStore.edit { preferences ->
+                preferences[DARK_MODE] = isDarkMode
+            }
+        }
+    }
 }

@@ -29,4 +29,12 @@ class PreferencesRepositoryImpl @Inject constructor(
     override suspend fun setFirstEnter(isFirst: Boolean) {
         preferencesDataSource.setFirstEnter(isFirst = isFirst)
     }
+
+    override suspend fun isDarkMode(): Boolean {
+        return preferencesDataSource.isDarkMode().first()
+    }
+
+    override suspend fun setDarkMode(isDarkMode: Boolean) {
+        preferencesDataSource.setDarkMode(isDarkMode = isDarkMode)
+    }
 }

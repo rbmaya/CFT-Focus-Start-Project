@@ -3,6 +3,7 @@ package com.nsu.focusstartproject.presentation.auth_user_screens.account_setting
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -22,6 +23,7 @@ class AccountSettingsFragment : Fragment(R.layout.account_settings_fragment) {
 
         initListeners()
         initObservers()
+        viewModel.initSwitchDarkMode()
     }
 
     private fun initObservers() {
@@ -31,11 +33,22 @@ class AccountSettingsFragment : Fragment(R.layout.account_settings_fragment) {
         viewModel.navigateToAuthFragment.observe(viewLifecycleOwner) {
             navigateToAuthFragment()
         }
+        viewModel.enableDarkMode.observe(viewLifecycleOwner) {
+            binding.darkModeSwitch.isChecked = it
+            if (it) {
+                enableDarkMode()
+            } else {
+                enableLightMode()
+            }
+        }
     }
 
     private fun initListeners() {
         binding.signOutButton.setOnClickListener {
             viewModel.onSignOutButtonClicked()
+        }
+        binding.darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.onSwitchDarkMode(isChecked = isChecked)
         }
     }
 
@@ -54,6 +67,14 @@ class AccountSettingsFragment : Fragment(R.layout.account_settings_fragment) {
                 dialog.cancel()
             }
             .show()
+    }
+
+    private fun enableDarkMode() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    }
+
+    private fun enableLightMode() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
 }
