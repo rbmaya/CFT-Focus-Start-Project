@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">YourLoans</string>
+    <string name="app_name" translatable="false">YourLoans</string>
     <string name="authorization_text">Authorization</string>
     <string name="username">User name</string>
     <string name="password">Password</string>
@@ -27,24 +27,33 @@
     <string name="conditions_available">The are conditions available for you:</string>
     <string name="conditions">At %1$s\%% for %2$s days</string>
     <string name="amount_helper_text">Maximum: %1$s</string>
-    <string name="error_loading_conditions">Unable to load loan terms</string>
+    <string name="error_loading_conditions">Unable to load loan conditions</string>
     <string name="error_creating_loan">Unable to create loan request</string>
     <string name="money">%1$s\$</string>
     <string name="amount_label">Amount: </string>
     <string name="date_label">Date:</string>
     <string name="state">State</string>
     <string name="error_loading_loan">Error loading loan details</string>
-    <string name="approved">APPROVED</string>
-    <string name="rejected">REJECTED</string>
-    <string name="percent_formatted">%1$s\%%</string>
+    <string name="approved" translatable="false">APPROVED</string>
+    <string name="rejected" translatable="false">REJECTED</string>
+    <string name="percent_formatted" translatable="false">%1$s\%%</string>
     <string name="period_formatted">%1$s days</string>
     <string name="success_loan_request_title">Your loan request has been successfully completed!</string>
     <string name="success_loan_request_message">Now you can watch the status of the request in the loan list.</string>
     <string name="get_loan_title">Congratulations! Now you can get a loan.</string>
     <string name="get_loan_message">Take your passport and come to our bank at the address: Musa Jalil str., 11. We will be waiting for you!</string>
     <string name="how_to_get_a_loan">How to get a loan?</string>
-    <string name="page_number">%1$s</string>
+    <string name="page_number" translatable="false">%1$s</string>
     <string name="text_onboarding_slide_one">You can create a new loan request by clicking on the plus.</string>
     <string name="text_onboarding_slide_two">You can view the status of your requests on the main screen.</string>
     <string name="text_onboarding_slide_three">You can change the settings by clicking on the account icon below.</string>
+    <string name="sign_out">Sign out</string>
+    <string name="loans">Loans</string>
+    <string name="loan">Loan</string>
+    <string name="account_settings">Account</string>
+    <string name="new_loan">New loan</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">Ok</string>
 </resources>
