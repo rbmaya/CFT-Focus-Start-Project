@@ -16,9 +16,9 @@ import com.nsu.focusstartproject.presentation.getOrAwaitValue
 import com.nsu.focusstartproject.presentation.no_auth_user_screens.authorization.AuthenticationViewModel
 import com.nsu.focusstartproject.utils.DataStatus
 import io.mockk.*
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

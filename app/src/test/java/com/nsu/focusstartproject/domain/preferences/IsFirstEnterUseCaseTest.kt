@@ -3,8 +3,8 @@ package com.nsu.focusstartproject.domain.preferences
 import com.nsu.focusstartproject.TestEntities.IS_FIRST_ENTER
 import io.mockk.coEvery
 import io.mockk.mockk
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner

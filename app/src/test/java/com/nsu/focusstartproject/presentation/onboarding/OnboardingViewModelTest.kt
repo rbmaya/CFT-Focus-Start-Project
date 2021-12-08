@@ -7,8 +7,8 @@ import com.nsu.focusstartproject.domain.preferences.PreferencesRepository
 import com.nsu.focusstartproject.domain.preferences.SetFirstEnterUseCase
 import com.nsu.focusstartproject.presentation.getOrAwaitValue
 import io.mockk.*
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

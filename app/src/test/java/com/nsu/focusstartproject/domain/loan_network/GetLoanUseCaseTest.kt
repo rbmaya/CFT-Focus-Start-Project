@@ -5,8 +5,8 @@ import com.nsu.focusstartproject.TestEntities.LOAN_ID
 import com.nsu.focusstartproject.utils.DataStatus
 import io.mockk.coEvery
 import io.mockk.mockk
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner

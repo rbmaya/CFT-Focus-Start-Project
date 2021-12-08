@@ -10,9 +10,9 @@ import com.nsu.focusstartproject.domain.preferences.SetDarkModeUseCase
 import com.nsu.focusstartproject.presentation.auth_user_screens.account_settings.AccountSettingsViewModel
 import com.nsu.focusstartproject.presentation.getOrAwaitValue
 import io.mockk.*
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
