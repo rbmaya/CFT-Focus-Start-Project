@@ -1,5 +1,6 @@
 package com.nsu.focusstartproject
 
+import com.nsu.focusstartproject.data.auth.UserDto
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.domain.LoanCondition
 import com.nsu.focusstartproject.domain.LoanRequest
@@ -19,6 +20,8 @@ object TestEntities {
         name = "Ivan",
         password = "password"
     )
+
+    val USER_DTO = UserDto(name = "Ivan", role = "ADMIN")
 
     val NO_VALID_USER_INFO: UserInfo = UserInfo(
         name = "",
