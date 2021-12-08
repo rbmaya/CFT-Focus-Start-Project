@@ -2,11 +2,11 @@ package com.nsu.focusstartproject.presentation.auth_user_screens
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nsu.focusstartproject.TestCoroutineRule
+import com.nsu.focusstartproject.TestEntities.IS_DARK_MODE
 import com.nsu.focusstartproject.domain.preferences.DeleteTokenUseCase
 import com.nsu.focusstartproject.domain.preferences.IsDarkModeUseCase
 import com.nsu.focusstartproject.domain.preferences.PreferencesRepository
 import com.nsu.focusstartproject.domain.preferences.SetDarkModeUseCase
-import com.nsu.focusstartproject.presentation.TestEntities.IS_DARK_MODE
 import com.nsu.focusstartproject.presentation.auth_user_screens.account_settings.AccountSettingsViewModel
 import com.nsu.focusstartproject.presentation.getOrAwaitValue
 import io.mockk.*

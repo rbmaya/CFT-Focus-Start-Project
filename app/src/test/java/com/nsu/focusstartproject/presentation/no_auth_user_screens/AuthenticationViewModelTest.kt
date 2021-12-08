@@ -2,16 +2,16 @@ package com.nsu.focusstartproject.presentation.no_auth_user_screens
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nsu.focusstartproject.TestCoroutineRule
+import com.nsu.focusstartproject.TestEntities.IS_FIRST_ENTER
+import com.nsu.focusstartproject.TestEntities.NO_VALID_USER_INFO
+import com.nsu.focusstartproject.TestEntities.TOKEN
+import com.nsu.focusstartproject.TestEntities.USER_INFO
 import com.nsu.focusstartproject.domain.auth.AuthRepository
 import com.nsu.focusstartproject.domain.auth.SignInUseCase
 import com.nsu.focusstartproject.domain.preferences.GetTokenUseCase
 import com.nsu.focusstartproject.domain.preferences.IsFirstEnterUseCase
 import com.nsu.focusstartproject.domain.preferences.PreferencesRepository
 import com.nsu.focusstartproject.domain.preferences.SetTokenUseCase
-import com.nsu.focusstartproject.presentation.TestEntities.IS_FIRST_ENTER
-import com.nsu.focusstartproject.presentation.TestEntities.NO_VALID_USER_INFO
-import com.nsu.focusstartproject.presentation.TestEntities.TOKEN
-import com.nsu.focusstartproject.presentation.TestEntities.USER_INFO
 import com.nsu.focusstartproject.presentation.getOrAwaitValue
 import com.nsu.focusstartproject.presentation.no_auth_user_screens.authorization.AuthenticationViewModel
 import com.nsu.focusstartproject.utils.DataStatus

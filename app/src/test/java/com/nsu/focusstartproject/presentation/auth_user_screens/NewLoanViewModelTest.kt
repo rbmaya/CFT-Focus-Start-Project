@@ -2,12 +2,12 @@ package com.nsu.focusstartproject.presentation.auth_user_screens
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nsu.focusstartproject.TestCoroutineRule
+import com.nsu.focusstartproject.TestEntities.LOAN_3
+import com.nsu.focusstartproject.TestEntities.LOAN_CONDITION
+import com.nsu.focusstartproject.TestEntities.LOAN_REQUEST
 import com.nsu.focusstartproject.domain.loan_network.CreateLoanRequestUseCase
 import com.nsu.focusstartproject.domain.loan_network.GetLoanConditionsUseCase
 import com.nsu.focusstartproject.domain.loan_network.LoanRepository
-import com.nsu.focusstartproject.presentation.TestEntities.LOAN_3
-import com.nsu.focusstartproject.presentation.TestEntities.LOAN_CONDITION
-import com.nsu.focusstartproject.presentation.TestEntities.LOAN_REQUEST
 import com.nsu.focusstartproject.presentation.auth_user_screens.new_loan.NewLoanViewModel
 import com.nsu.focusstartproject.presentation.getOrAwaitValue
 import com.nsu.focusstartproject.utils.DataStatus

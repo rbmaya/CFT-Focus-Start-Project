@@ -2,9 +2,9 @@ package com.nsu.focusstartproject.presentation.onboarding
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nsu.focusstartproject.TestCoroutineRule
+import com.nsu.focusstartproject.TestEntities.IS_FIRST_ENTER
 import com.nsu.focusstartproject.domain.preferences.PreferencesRepository
 import com.nsu.focusstartproject.domain.preferences.SetFirstEnterUseCase
-import com.nsu.focusstartproject.presentation.TestEntities.IS_FIRST_ENTER
 import com.nsu.focusstartproject.presentation.getOrAwaitValue
 import io.mockk.*
 import junit.framework.Assert.assertEquals

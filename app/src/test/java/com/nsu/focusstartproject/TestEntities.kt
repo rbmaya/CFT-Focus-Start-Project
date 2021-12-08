@@ -1,4 +1,4 @@
-package com.nsu.focusstartproject.presentation
+package com.nsu.focusstartproject
 
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.domain.LoanCondition
