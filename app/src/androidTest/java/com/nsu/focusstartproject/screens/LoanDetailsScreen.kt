@@ -16,9 +16,5 @@ object LoanDetailsScreen : Screen<LoanDetailsScreen>() {
 
     val percent = KTextView { withId(R.id.percent) }
 
-    val period = KTextView { withId(R.id.period) }
-
-    val phoneNumber = KTextView { withId(R.id.phone_number) }
-
     val state = KTextView { withId(R.id.state) }
 }
