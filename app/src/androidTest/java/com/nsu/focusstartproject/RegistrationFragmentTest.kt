@@ -7,6 +7,7 @@ import com.nsu.focusstartproject.screens.AccountSettingsScreen
 import com.nsu.focusstartproject.screens.AuthUserScreen
 import com.nsu.focusstartproject.screens.AuthorizationScreen
 import com.nsu.focusstartproject.screens.RegistrationScreen
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,34 +18,35 @@ class RegistrationFragmentTest : KTestCase() {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    @Before
+    fun setUp() {
+        exitToNoAuthUserScreen()
+    }
+
     @Test
     fun testRegisterScreen() {
-        before {
-            exitToNoAuthUserScreen()
-        }
-            .after { }
-            .run {
-                step("Navigate to register screen") {
-                    AuthorizationScreen {
-                        registerButton {
-                            click()
-                        }
-                    }
-                }
-                step("Check registration screen") {
-                    RegistrationScreen {
-                        username {
-                            isClickable()
-                        }
-                        password {
-                            isClickable()
-                        }
-                        signUpButton {
-                            isClickable()
-                        }
+        run {
+            step("Navigate to register screen") {
+                AuthorizationScreen {
+                    registerButton {
+                        click()
                     }
                 }
             }
+            step("Check registration screen") {
+                RegistrationScreen {
+                    username {
+                        isClickable()
+                    }
+                    password {
+                        isClickable()
+                    }
+                    signUpButton {
+                        isClickable()
+                    }
+                }
+            }
+        }
     }
 
     private fun exitToNoAuthUserScreen() {

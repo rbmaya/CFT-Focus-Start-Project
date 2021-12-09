@@ -3,10 +3,8 @@ package com.nsu.focusstartproject
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.nsu.focusstartproject.presentation.MainActivity
-import com.nsu.focusstartproject.screens.AuthorizationScreen
-import com.nsu.focusstartproject.screens.LoanDetailsScreen
-import com.nsu.focusstartproject.screens.LoanListScreen
-import com.nsu.focusstartproject.screens.NewLoanScreen
+import com.nsu.focusstartproject.screens.*
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,22 +15,23 @@ class LoanListFragmentTest : KTestCase() {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    @Before
+    fun setUp() {
+        navigateToAuthUserScreen()
+    }
+
     @Test
     fun testLoanList() {
-        before {
-            navigateToAuthUserScreen()
-        }
-            .after { }
-            .run {
-                step("Check loan list content") {
-                    checkLoans(
-                        Loan(amount = "0", date = "06.12.2021"),
-                        Loan(amount = "3000", date = "06.12.2021"),
-                        Loan(amount = "5000", date = "04.12.2021"),
-                        Loan(amount = "200", date = "04.12.2021")
-                    )
-                }
+        run {
+            step("Check loan list content") {
+                checkLoans(
+                    Loan(amount = "0", date = "06.12.2021"),
+                    Loan(amount = "3000", date = "06.12.2021"),
+                    Loan(amount = "5000", date = "04.12.2021"),
+                    Loan(amount = "200", date = "04.12.2021")
+                )
             }
+        }
     }
 
     data class Loan(val amount: String, val date: String)
@@ -56,29 +55,25 @@ class LoanListFragmentTest : KTestCase() {
 
     @Test
     fun checkAddNewLoanButton() {
-        before {
-            navigateToAuthUserScreen()
-        }
-            .after { }
-            .run {
-                step("Check add new loan button") {
-                    LoanListScreen {
-                        addLoanButton {
-                            click()
-                        }
-                    }
-                }
-                step("Check that the open screen is add new loan screen") {
-                    NewLoanScreen {
-                        conditions {
-                            isDisplayed()
-                        }
-                        addLoanButton {
-                            isClickable()
-                        }
+        run {
+            step("Check add new loan button") {
+                LoanListScreen {
+                    addLoanButton {
+                        click()
                     }
                 }
             }
+            step("Check that the open screen is add new loan screen") {
+                NewLoanScreen {
+                    conditions {
+                        isDisplayed()
+                    }
+                    addLoanButton {
+                        isClickable()
+                    }
+                }
+            }
+        }
     }
 
     @Test
@@ -124,6 +119,11 @@ class LoanListFragmentTest : KTestCase() {
                     replaceText("rmaya")
                 }
                 signInButton {
+                    click()
+                }
+            }
+            OnboardingScreen {
+                skipButton {
                     click()
                 }
             }

@@ -6,6 +6,8 @@ import com.nsu.focusstartproject.presentation.MainActivity
 import com.nsu.focusstartproject.screens.AccountSettingsScreen
 import com.nsu.focusstartproject.screens.AuthUserScreen
 import com.nsu.focusstartproject.screens.AuthorizationScreen
+import com.nsu.focusstartproject.screens.OnboardingScreen
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,61 +18,58 @@ class AccountSettingsFragmentTest : KTestCase() {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    @Before
+    fun setUp() {
+        navigateToAuthUserScreen()
+    }
+
     @Test
     fun testScreenContent() {
-        before {
-            navigateToAuthUserScreen()
-        }
-            .after { }
-            .run {
-                step("Navigate to account settings screen") {
-                    AuthUserScreen {
-                        tabLayout {
-                            selectTab(1)
-                        }
-                    }
-                }
-                step("Check screen content") {
-                    AccountSettingsScreen {
-                        darkModeSwitch {
-                            isClickable()
-                        }
-                        signOutButton {
-                            isClickable()
-                        }
+        run {
+            step("Navigate to account settings screen") {
+                AuthUserScreen {
+                    tabLayout {
+                        selectTab(1)
                     }
                 }
             }
+            step("Check screen content") {
+                AccountSettingsScreen {
+                    darkModeSwitch {
+                        isClickable()
+                    }
+                    signOutButton {
+                        isClickable()
+                    }
+                }
+            }
+        }
     }
 
     @Test
     fun testSignOutButton() {
-        before {
-            navigateToAuthUserScreen()
-        }
-            .after { }
-            .run {
-                step("Navigate to account settings screen") {
-                    AuthUserScreen {
-                        tabLayout.selectTab(1)
+        run {
+            step("Navigate to account settings screen") {
+                AuthUserScreen {
+                    tabLayout.selectTab(1)
+                }
+            }
+            step("Check sign out button") {
+                AccountSettingsScreen {
+                    signOutButton {
+                        click()
+                    }
+                    alertDialog.positiveButton {
+                        click()
                     }
                 }
-                step("Check sign out button") {
-                    AccountSettingsScreen {
-                        signOutButton {
-                            click()
-                        }
-                        alertDialog.positiveButton {
-                            click()
-                        }
-                    }
-                    AuthorizationScreen {
-                        signInButton {
-                            isClickable()
-                        }
+                AuthorizationScreen {
+                    signInButton {
+                        isClickable()
                     }
                 }
             }
+        }
     }
 
     private fun navigateToAuthUserScreen() {
@@ -83,6 +82,11 @@ class AccountSettingsFragmentTest : KTestCase() {
                     replaceText("rmaya")
                 }
                 signInButton {
+                    click()
+                }
+            }
+            OnboardingScreen {
+                skipButton {
                     click()
                 }
             }

@@ -7,6 +7,7 @@ import com.nsu.focusstartproject.screens.AccountSettingsScreen
 import com.nsu.focusstartproject.screens.AuthUserScreen
 import com.nsu.focusstartproject.screens.AuthorizationScreen
 import com.nsu.focusstartproject.screens.RegistrationScreen
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,68 +18,65 @@ class AuthorizationFragmentTest : KTestCase() {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    @Before
+    fun setUp() {
+        exitToNoAuthUserScreen()
+    }
+
     @Test
     fun testRegisterButton() {
-        before {
-            exitToNoAuthUserScreen()
-        }
-            .after { }
-            .run {
-                step("Click register button") {
-                    AuthorizationScreen {
-                        registerButton {
-                            click()
-                        }
-                    }
-                }
-                step("Check that the open screen is registration screen") {
-                    RegistrationScreen {
-                        username {
-                            isClickable()
-                        }
-                        password {
-                            isClickable()
-                        }
-                        signUpButton {
-                            isClickable()
-                        }
+        run {
+            step("Click register button") {
+                AuthorizationScreen {
+                    registerButton {
+                        click()
                     }
                 }
             }
+            step("Check that the open screen is registration screen") {
+                RegistrationScreen {
+                    username {
+                        isClickable()
+                    }
+                    password {
+                        isClickable()
+                    }
+                    signUpButton {
+                        isClickable()
+                    }
+                }
+            }
+        }
     }
 
 
     @Test
     fun testSignInButton() {
-        before {
-            exitToNoAuthUserScreen()
-        }
-            .after { }
-            .run {
-                step("Exit to no auth user screen in necessary") {
-                    continuously(timeoutMs = 3000L) { exitToNoAuthUserScreen() }
-                }
-                step("Click sign in button") {
-                    AuthorizationScreen {
-                        username {
-                            replaceText("rmaya")
-                        }
-                        password {
-                            replaceText("rmaya")
-                        }
-                        signInButton {
-                            click()
-                        }
+        run {
+            step("Exit to no auth user screen in necessary") {
+                continuously(timeoutMs = 3000L) { exitToNoAuthUserScreen() }
+            }
+            step("Click sign in button") {
+                AuthorizationScreen {
+                    username {
+                        replaceText("rmaya")
                     }
-                }
-                step("Check that the open screen is auth user screen") {
-                    AuthUserScreen {
-                        tabLayout.perform {
-                            isDisplayed()
-                        }
+                    password {
+                        replaceText("rmaya")
+                    }
+                    signInButton {
+                        click()
                     }
                 }
             }
+            step("Check that the open screen is auth user screen") {
+                AuthUserScreen {
+                    tabLayout.perform {
+                        isDisplayed()
+                    }
+                }
+            }
+        }
     }
 
     private fun exitToNoAuthUserScreen() {

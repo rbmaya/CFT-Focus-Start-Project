@@ -6,6 +6,8 @@ import com.nsu.focusstartproject.presentation.MainActivity
 import com.nsu.focusstartproject.screens.AuthorizationScreen
 import com.nsu.focusstartproject.screens.LoanDetailsScreen
 import com.nsu.focusstartproject.screens.LoanListScreen
+import com.nsu.focusstartproject.screens.OnboardingScreen
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,59 +18,56 @@ class LoanDetailsFragmentTest : KTestCase() {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+    @Before
+    fun setUp() {
+        navigateToAuthUserScreen()
+    }
+
     @Test
     fun testLoanDetailsContent() {
-        before {
-            navigateToAuthUserScreen()
-        }
-            .after { }
-            .run {
-                step("Open loan details") {
-                    openLoanDetails(0)
-                }
-                step("Check loan details content") {
-                    LoanDetailsScreen {
-                        amount {
-                            hasText("0")
-                        }
-                        date {
-                            containsText("06.12.2021")
-                        }
-                        firstName {
-                            hasText("Илья")
-                        }
-                        lastName {
-                            hasText("Ильин")
-                        }
-                        percent {
-                            hasText("10.5%")
-                        }
+        run {
+            step("Open loan details") {
+                openLoanDetails(0)
+            }
+            step("Check loan details content") {
+                LoanDetailsScreen {
+                    amount {
+                        hasText("0")
+                    }
+                    date {
+                        containsText("06.12.2021")
+                    }
+                    firstName {
+                        hasText("Илья")
+                    }
+                    lastName {
+                        hasText("Ильин")
+                    }
+                    percent {
+                        hasText("10.5%")
                     }
                 }
             }
+        }
     }
 
     @Test
     fun testNavigationOnBackToLoanList() {
-        before {
-            navigateToAuthUserScreen()
-        }
-            .after { }
-            .run {
-                step("Open loan details") {
-                    openLoanDetails(0)
+        run {
+            step("Open loan details") {
+                openLoanDetails(0)
+            }
+            step("Check navigation back") {
+                LoanDetailsScreen {
+                    pressBack()
                 }
-                step("Check navigation back") {
-                    LoanDetailsScreen {
-                        pressBack()
-                    }
-                    LoanListScreen {
-                        recyclerView {
-                            isDisplayed()
-                        }
+                LoanListScreen {
+                    recyclerView {
+                        isDisplayed()
                     }
                 }
             }
+        }
     }
 
     private fun openLoanDetails(index: Int) {
@@ -89,6 +88,11 @@ class LoanDetailsFragmentTest : KTestCase() {
                     replaceText("rmaya")
                 }
                 signInButton {
+                    click()
+                }
+            }
+            OnboardingScreen {
+                skipButton {
                     click()
                 }
             }
