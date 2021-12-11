@@ -61,4 +61,6 @@
     <string name="no_network_available">No network available, \nplease check your WiFi or Mobile network connection</string>
     <string name="socket_timeout">Timeout expired</string>
     <string name="dark_mode">Dark mode</string>
+    <string name="payment">Payment</string>
+    <string name="payment_notification_text">Don\'t forget to pay off your loans!</string>
 </resources>

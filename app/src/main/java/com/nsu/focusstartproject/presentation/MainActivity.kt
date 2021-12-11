@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        viewModel.checkExistsApprovedLoans()
         viewModel.checkIsDarkMode()
         viewModel.enableDarkModeEvent.observe(this) {
             if (it) {
@@ -31,5 +32,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun enableLightMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.onViewResume()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.onViewStop()
     }
 }

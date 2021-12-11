@@ -57,4 +57,7 @@
     <string name="no_network_available">Нет доступа к сети, \nпожалуйста, проверьте подключение к WiFi или мобильной сети</string>
     <string name="socket_timeout">Время ожидания истекло</string>
     <string name="unknown_host">Имя хоста не доступно</string>
+    <string name="dark_mode">Темная тема</string>
+    <string name="payment">Оплата</string>
+    <string name="payment_notification_text">Не забывайте гасить свои займы!</string>
 </resources>
