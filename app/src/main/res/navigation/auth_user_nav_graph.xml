@@ -37,7 +37,10 @@
         android:label="@string/loan">
         <argument
             android:name="id"
-            app:argType="long" />
+            app:argType="string" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="nsu.com.yourloans/loans/{id}" />
     </fragment>
     <fragment
         android:id="@+id/accountSettingsFragment"

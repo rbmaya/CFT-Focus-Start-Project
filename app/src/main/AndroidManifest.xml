@@ -17,6 +17,8 @@
             android:name=".presentation.MainActivity"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">
+
+            <nav-graph android:value="@navigation/auth_user_nav_graph" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

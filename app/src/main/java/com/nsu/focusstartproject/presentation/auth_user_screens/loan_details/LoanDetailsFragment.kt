@@ -31,11 +31,20 @@ class LoanDetailsFragment : Fragment(R.layout.loan_details_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.loadLoanDetails(navArgs.id)
-
+        loadData()
         initObservers()
         initListeners()
     }
+
+    private fun loadData() {
+        try {
+            val id = navArgs.id.toLong()
+            viewModel.loadLoanDetails(id)
+        } catch (exc: NumberFormatException) {
+            showMessage(getString(R.string.unknown_error_body))
+        }
+    }
+
 
     private fun initObservers() {
         viewModel.loanDetailsStatus.observe(viewLifecycleOwner) {

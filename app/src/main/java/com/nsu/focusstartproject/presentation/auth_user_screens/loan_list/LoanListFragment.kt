@@ -92,7 +92,8 @@ class LoanListFragment : Fragment(R.layout.loan_list_fragment) {
     }
 
     private fun navigateToLoanDetailsFragment(id: Long) {
-        val action = LoanListFragmentDirections.actionLoanListFragmentToLoanDetailsFragment(id)
+        val action =
+            LoanListFragmentDirections.actionLoanListFragmentToLoanDetailsFragment(id.toString())
         findNavController().navigate(action)
     }
 }
