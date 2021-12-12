@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.domain.loan_network.GetAllLoansUseCase
+import com.nsu.focusstartproject.domain.loans_cache.GetSavedLoansUseCase
+import com.nsu.focusstartproject.domain.loans_cache.SaveLoansUseCase
 import com.nsu.focusstartproject.utils.DataStatus
 import com.nsu.focusstartproject.utils.LiveEvent
 import com.nsu.focusstartproject.utils.SingleLiveEvent
@@ -20,7 +22,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoanListViewModel @Inject constructor(
-    private val getAllLoansUseCase: GetAllLoansUseCase
+    private val getAllLoansUseCase: GetAllLoansUseCase,
+    private val getSavedLoansUseCase: GetSavedLoansUseCase,
+    private val saveLoansUseCase: SaveLoansUseCase
 ) : ViewModel() {
 
     companion object {
@@ -43,11 +47,31 @@ class LoanListViewModel @Inject constructor(
         }
     }
 
+    fun loadSavedData() {
+        _loadDataState.value = DataStatus.Loading
+        viewModelScope.launch {
+            val dataStatus = getSavedLoansUseCase()
+
+            _loadDataState.value = dataStatus
+            if (dataStatus is DataStatus.Success) {
+                val loans = dataStatus.data
+                loans?.let {
+                    if (it.isEmpty()) {
+                        loadData()
+                    }
+                }
+            }
+        }
+    }
+
     fun loadData() {
         _loadDataState.value = DataStatus.Loading
         viewModelScope.launch(excHandler) {
-            val data = getAllLoansUseCase()
-            _loadDataState.value = data
+            val dataStatus = getAllLoansUseCase()
+            _loadDataState.value = dataStatus
+            if (dataStatus is DataStatus.Success) {
+                dataStatus.data?.let { saveLoansUseCase(it) }
+            }
         }
     }
 

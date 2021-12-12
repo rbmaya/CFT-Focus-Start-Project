@@ -33,7 +33,7 @@ class LoanListFragment : Fragment(R.layout.loan_list_fragment) {
 
         initViews()
         initObservers()
-        viewModel.loadData()
+        viewModel.loadSavedData()
     }
 
     private fun initViews() {

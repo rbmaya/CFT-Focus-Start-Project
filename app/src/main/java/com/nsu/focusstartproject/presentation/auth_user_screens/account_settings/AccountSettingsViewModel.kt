@@ -3,6 +3,7 @@ package com.nsu.focusstartproject.presentation.auth_user_screens.account_setting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nsu.focusstartproject.domain.loans_cache.DeleteLoansUseCase
 import com.nsu.focusstartproject.domain.preferences.DeleteTokenUseCase
 import com.nsu.focusstartproject.domain.preferences.IsDarkModeUseCase
 import com.nsu.focusstartproject.domain.preferences.SetDarkModeUseCase
@@ -16,7 +17,8 @@ import javax.inject.Inject
 class AccountSettingsViewModel @Inject constructor(
     private val deleteTokenUseCase: DeleteTokenUseCase,
     private val isDarkModeUseCase: IsDarkModeUseCase,
-    private val setDarkModeUseCase: SetDarkModeUseCase
+    private val setDarkModeUseCase: SetDarkModeUseCase,
+    private val deleteLoansUseCase: DeleteLoansUseCase
 ) : ViewModel() {
 
     private val _signOutEvent = LiveEvent()
@@ -35,6 +37,7 @@ class AccountSettingsViewModel @Inject constructor(
     fun onSignOutConfirm() {
         viewModelScope.launch {
             deleteTokenUseCase()
+            deleteLoansUseCase()
             _navigateToAuthFragment()
         }
     }
