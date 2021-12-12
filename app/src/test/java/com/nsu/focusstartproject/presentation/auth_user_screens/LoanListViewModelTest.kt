@@ -6,12 +6,13 @@ import com.nsu.focusstartproject.TestEntities.LOANS
 import com.nsu.focusstartproject.TestEntities.LOAN_ID
 import com.nsu.focusstartproject.domain.loan_network.GetAllLoansUseCase
 import com.nsu.focusstartproject.domain.loan_network.LoanRepository
+import com.nsu.focusstartproject.domain.loans_cache.GetSavedLoansUseCase
+import com.nsu.focusstartproject.domain.loans_cache.SaveLoansUseCase
+import com.nsu.focusstartproject.domain.loans_cache.SavedLoanRepository
 import com.nsu.focusstartproject.presentation.auth_user_screens.loan_list.LoanListViewModel
 import com.nsu.focusstartproject.presentation.getOrAwaitValue
 import com.nsu.focusstartproject.utils.DataStatus
-import io.mockk.coEvery
-import io.mockk.coVerify
-import io.mockk.mockk
+import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.assertEquals
@@ -36,11 +37,33 @@ class LoanListViewModelTest {
         coEvery { getAllLoans() } returns DataStatus.Success(LOANS)
     }
 
+    private val savedLoanRepository: SavedLoanRepository = mockk {
+        coEvery { saveLoans(LOANS) } just runs
+        coEvery { getSavedLoans() } returns DataStatus.Success(LOANS)
+    }
+
     @Before
     fun setUp() {
         viewModel = LoanListViewModel(
-            getAllLoansUseCase = GetAllLoansUseCase(loanRepository)
+            getAllLoansUseCase = GetAllLoansUseCase(loanRepository),
+            getSavedLoansUseCase = GetSavedLoansUseCase(savedLoanRepository),
+            saveLoansUseCase = SaveLoansUseCase(savedLoanRepository)
         )
+    }
+
+    @Test
+    fun `loan saved data EXPECT load saved loan list`() {
+        runBlockingTest {
+            viewModel.loadSavedData()
+
+            coVerify {
+                savedLoanRepository.getSavedLoans()
+            }
+
+            val expected = DataStatus.Success(LOANS)
+            val actual = viewModel.loadDataState.getOrAwaitValue()
+            assertEquals(expected, actual)
+        }
     }
 
     @Test
@@ -48,8 +71,9 @@ class LoanListViewModelTest {
         runBlockingTest {
             viewModel.loadData()
 
-            coVerify {
+            coVerifySequence {
                 loanRepository.getAllLoans()
+                savedLoanRepository.saveLoans(LOANS)
             }
 
             val expected = DataStatus.Success(LOANS)

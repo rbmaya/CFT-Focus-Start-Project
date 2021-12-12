@@ -3,6 +3,8 @@ package com.nsu.focusstartproject.presentation.auth_user_screens
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nsu.focusstartproject.TestCoroutineRule
 import com.nsu.focusstartproject.TestEntities.IS_DARK_MODE
+import com.nsu.focusstartproject.domain.loans_cache.DeleteLoansUseCase
+import com.nsu.focusstartproject.domain.loans_cache.SavedLoanRepository
 import com.nsu.focusstartproject.domain.preferences.DeleteTokenUseCase
 import com.nsu.focusstartproject.domain.preferences.IsDarkModeUseCase
 import com.nsu.focusstartproject.domain.preferences.PreferencesRepository
@@ -37,12 +39,17 @@ class AccountSettingsViewModelTest {
         coEvery { setDarkMode(IS_DARK_MODE) } just runs
     }
 
+    private val savedLoanRepository: SavedLoanRepository = mockk {
+        coEvery { deleteLoans() } just runs
+    }
+
     @Before
     fun setUp() {
         viewModel = AccountSettingsViewModel(
             deleteTokenUseCase = DeleteTokenUseCase(preferencesRepository),
             isDarkModeUseCase = IsDarkModeUseCase(preferencesRepository),
-            setDarkModeUseCase = SetDarkModeUseCase(preferencesRepository)
+            setDarkModeUseCase = SetDarkModeUseCase(preferencesRepository),
+            deleteLoansUseCase = DeleteLoansUseCase(savedLoanRepository)
         )
     }
 
@@ -58,8 +65,9 @@ class AccountSettingsViewModelTest {
         runBlockingTest {
             viewModel.onSignOutConfirm()
 
-            coVerify {
+            coVerifySequence {
                 preferencesRepository.deleteToken()
+                savedLoanRepository.deleteLoans()
             }
 
             assertEquals(viewModel.navigateToAuthFragment.getOrAwaitValue(), Unit)

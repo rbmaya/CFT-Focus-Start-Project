@@ -1,6 +1,8 @@
 package com.nsu.focusstartproject
 
 import com.nsu.focusstartproject.data.auth.UserDto
+import com.nsu.focusstartproject.data.loans_cache.SavedLoan
+import com.nsu.focusstartproject.data.loans_cache.toSavedLoan
 import com.nsu.focusstartproject.domain.Loan
 import com.nsu.focusstartproject.domain.LoanCondition
 import com.nsu.focusstartproject.domain.LoanRequest
@@ -70,6 +72,10 @@ object TestEntities {
 
     val LOANS: List<Loan> = listOf(
         LOAN_1, LOAN_2, LOAN_3
+    )
+
+    val SAVED_LOANS: List<SavedLoan> = listOf(
+        LOAN_1.toSavedLoan(), LOAN_2.toSavedLoan(), LOAN_3.toSavedLoan()
     )
 
     val LOAN_REQUEST = LoanRequest(
