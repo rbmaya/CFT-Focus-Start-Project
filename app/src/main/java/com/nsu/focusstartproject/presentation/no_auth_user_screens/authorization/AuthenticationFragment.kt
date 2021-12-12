@@ -28,7 +28,7 @@ class AuthenticationFragment : Fragment(R.layout.auth_fragment) {
     lateinit var errorCodeProcessor: ErrorCodeProcessor
 
     companion object {
-        const val WIGGLE_FIELD_TIME = 500L
+        const val WIGGLE_FIELD_TIME = 200L
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

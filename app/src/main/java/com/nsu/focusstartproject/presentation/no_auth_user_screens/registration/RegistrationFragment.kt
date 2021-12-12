@@ -27,7 +27,7 @@ class RegistrationFragment : Fragment(R.layout.registration_fragment) {
     lateinit var errorCodeProcessor: ErrorCodeProcessor
 
     companion object {
-        const val WIGGLE_FIELD_TIME = 500L
+        const val WIGGLE_FIELD_TIME = 200L
     }
 
 
