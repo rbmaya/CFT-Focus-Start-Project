@@ -114,6 +114,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
+        app:indicatorColor="?attr/colorSecondary"
         android:id="@+id/authorization_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

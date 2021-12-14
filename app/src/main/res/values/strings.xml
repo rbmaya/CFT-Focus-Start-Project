@@ -63,4 +63,5 @@
     <string name="dark_mode">Dark mode</string>
     <string name="payment">Payment</string>
     <string name="payment_notification_text">Don\'t forget to pay off your loans!</string>
+    <string name="now_you_have_no_loan_requests">Now you have no loan requests!</string>
 </resources>

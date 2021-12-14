@@ -70,7 +70,12 @@ class LoanListFragment : Fragment(R.layout.loan_list_fragment) {
                 binding.swipeToRefreshLayout.isRefreshing = false
                 val loans = dataStatus.data
                 loans?.let {
-                    loanListAdapter.loans = viewModel.processLoans(loans)
+                    if (it.isEmpty()) {
+                        binding.emptyListTitle.visibility = View.VISIBLE
+                    } else {
+                        binding.emptyListTitle.visibility = View.GONE
+                        loanListAdapter.loans = viewModel.processLoans(loans)
+                    }
                 }
             }
             is DataStatus.Error -> {

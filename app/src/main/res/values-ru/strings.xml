@@ -60,4 +60,5 @@
     <string name="dark_mode">Темная тема</string>
     <string name="payment">Оплата</string>
     <string name="payment_notification_text">Не забывайте гасить свои займы!</string>
+    <string name="now_you_have_no_loan_requests">Пока у Вас нет заявок на займы!</string>
 </resources>

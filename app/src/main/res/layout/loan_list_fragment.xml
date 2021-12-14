@@ -6,6 +6,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.auth_user_screens.loan_list.LoanListFragment">
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/empty_list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="@style/NormalText.Bold"
+        android:text="@string/now_you_have_no_loan_requests" />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_to_refresh_layout"
         android:layout_width="match_parent"

@@ -7,15 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.AuthUserFragment">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/auth_user_container_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        android:layout_weight="1"
-        app:navGraph="@navigation/auth_user_nav_graph" />
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
@@ -25,14 +16,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/loan_list"
-            android:icon="@drawable/ic_loan"/>
+            android:icon="@drawable/ic_loan" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/account"
-            android:icon="@drawable/ic_account"/>
+            android:icon="@drawable/ic_account" />
 
     </com.google.android.material.tabs.TabLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/auth_user_container_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        android:layout_weight="1"
+        app:navGraph="@navigation/auth_user_nav_graph" />
 
 </LinearLayout>
