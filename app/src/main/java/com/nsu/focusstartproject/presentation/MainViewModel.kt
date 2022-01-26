@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
         const val EXECUTOR_DELAY = 0L
         const val EXECUTOR_PERIOD = 10L
         const val REPEAT_INTERVAL = 3L
-        const val INITIAL_DELAY = 3L
+        const val INITIAL_DELAY = 10L
     }
 
     private val _enableDarkModeEvent = SingleLiveEvent<Boolean>()
@@ -95,7 +95,7 @@ class MainViewModel @Inject constructor(
     private fun initWorker() {
         val work =
             PeriodicWorkRequestBuilder<LoansNotificationWorker>(REPEAT_INTERVAL, TimeUnit.HOURS)
-                .setInitialDelay(INITIAL_DELAY, TimeUnit.HOURS)
+                .setInitialDelay(INITIAL_DELAY, TimeUnit.SECONDS)
                 .build()
 
         workManager.enqueue(work)
